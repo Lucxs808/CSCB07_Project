@@ -10,4 +10,10 @@
     <string name="signup_button_text">signup_button</string>
     <string name="previous">previous</string>
     <string name="hello_first_fragment">hello</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="studentnumber">Student Number</string>
+    <string name="logout">Logout</string>
 </resources>
