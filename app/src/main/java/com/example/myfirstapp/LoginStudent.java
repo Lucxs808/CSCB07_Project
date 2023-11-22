@@ -10,10 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.myfirstapp.databinding.StudentLoginBinding;
 
-import com.example.myfirstapp.databinding.FragmentSecondBinding;
 
-
-public class SecondFragment extends Fragment {
+public class LoginStudent extends Fragment {
 
 private StudentLoginBinding binding;
 
@@ -34,7 +32,7 @@ private StudentLoginBinding binding;
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
+                NavHostFragment.findNavController(LoginStudent.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
         });
