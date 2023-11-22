@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import com.example.myfirstapp.databinding.StudentLoginBinding;
+
 import com.example.myfirstapp.databinding.FragmentSecondBinding;
+
 
 public class SecondFragment extends Fragment {
 
-private FragmentSecondBinding binding;
+private StudentLoginBinding binding;
 
     @Override
     public View onCreateView(
@@ -20,7 +23,7 @@ private FragmentSecondBinding binding;
             Bundle savedInstanceState
     ) {
 
-      binding = FragmentSecondBinding.inflate(inflater, container, false);
+      binding = StudentLoginBinding.inflate(inflater, container, false);
       return binding.getRoot();
 
     }
@@ -28,7 +31,7 @@ private FragmentSecondBinding binding;
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(SecondFragment.this)

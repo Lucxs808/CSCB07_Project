@@ -30,7 +30,7 @@ private FragmentFirstBinding binding;
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonCheck.setOnClickListener(new View.OnClickListener() {
+        binding.buttonStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
