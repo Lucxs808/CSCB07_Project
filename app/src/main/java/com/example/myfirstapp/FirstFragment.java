@@ -10,11 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.myfirstapp.databinding.AdminLoginBinding;
 import com.example.myfirstapp.databinding.FragmentFirstBinding;
+import com.example.myfirstapp.databinding.StudentLoginBinding;
+
 // aaaaaaaaaaaa
 public class FirstFragment extends Fragment {
 
 private FragmentFirstBinding binding;
+//    private AdminLoginBinding binding2;
 
     @Override
     public View onCreateView(
@@ -37,6 +42,13 @@ private FragmentFirstBinding binding;
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+        binding.buttonAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_AdminLogin);
+            }
+        });
     }
 
 
@@ -48,3 +60,4 @@ private FragmentFirstBinding binding;
     }
 // Kirtan Test
 }
+
