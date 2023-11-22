@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import com.example.myfirstapp.databinding.FragmentFirstBinding;
-
+// aaaaaaaaaaaa
 public class FirstFragment extends Fragment {
 
 private FragmentFirstBinding binding;
@@ -30,7 +30,7 @@ private FragmentFirstBinding binding;
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonCheck.setOnClickListener(new View.OnClickListener() {
+        binding.buttonStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
@@ -46,5 +46,5 @@ private FragmentFirstBinding binding;
         super.onDestroyView();
         binding = null;
     }
-
+// Kirtan Test
 }
