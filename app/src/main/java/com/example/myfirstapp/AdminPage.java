@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import androidx.core.view.WindowCompat;
 import androidx.navigation.NavController;
@@ -23,15 +25,33 @@ public class AdminPage extends AppCompatActivity {
 
     DatabaseReference d;
     Button button;
-    TextView textView;
+    TextView admin_welcome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            String utorid = intent.getStringExtra("utorID");
+            String password = intent.getStringExtra("password");
+            //Log.d("AdminPageDebug", "Received utorid: " + utorid);
+            //Log.d("AdminPageDebug", "Received password: " + password);
+
+            if (utorid != null) {
+                admin_welcome = findViewById(R.id.adminWelcomeText);
+                admin_welcome.setText("Welcome! " + utorid);
+            } else {
+                //Log.e("AdminPageDebug", "Received utorid is null");
+                admin_welcome.setText("Welcome! (utorid is null)");
+            }
+        } else {
+            //Log.e("AdminPageDebug", "Intent is null");
+            admin_welcome.setText("Welcome! (Intent is null)");
+        }
+
         d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
         button = findViewById(R.id.logout);
-        textView = findViewById(R.id.user_details);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

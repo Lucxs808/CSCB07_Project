@@ -23,15 +23,33 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseReference d;
     Button button;
-    TextView textView;
+    TextView user_details;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            String utorid = intent.getStringExtra("utorID");
+            String password = intent.getStringExtra("password");
+            //Log.d("MainActivityDebug", "Received utorid: " + utorid);
+            //Log.d("MainActivityDebug", "Received password: " + password);
+
+            if (utorid != null) {
+                user_details = findViewById(R.id.user_details);
+                user_details.setText("Welcome! " + utorid);
+            } else {
+                //Log.e("AdminPageDebug", "Received utorid is null");
+                user_details.setText("Welcome!");
+            }
+        } else {
+            //Log.e("AdminPageDebug", "Intent is null");
+            user_details.setText("Welcome!");
+        }
+
         d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
         button = findViewById(R.id.logout);
-        textView = findViewById(R.id.user_details);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

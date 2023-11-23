@@ -58,6 +58,8 @@ public class Login extends AppCompatActivity {
                             if (password.equals(storedPassword)){
                                 //password matches, login successful
                                 Intent intent = new Intent(Login.this, MainActivity.class);
+                                intent.putExtra("utorID",utorid);
+                                intent.putExtra("password", password);
                                 startActivity(intent);
                                 finish();
                             }else{
@@ -98,6 +100,8 @@ public class Login extends AppCompatActivity {
                    if (password.equals(storedPassword)){
                        // Password matches, login successful for admin
                        Intent intent = new Intent(Login.this, AdminPage.class);
+                       intent.putExtra("utorID",utorid);
+                       intent.putExtra("password", password);
                        startActivity(intent);
                        finish();
                    }else{

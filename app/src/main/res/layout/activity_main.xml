@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="Student Page"
         android:textSize="20sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/buttonOption1"
