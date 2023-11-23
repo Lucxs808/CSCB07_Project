@@ -33,6 +33,11 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.MyFirstApp">
         </activity>
+        <activity
+            android:name=".AdminPage"
+            android:exported="true"
+            android:theme="@style/Theme.MyFirstApp">
+        </activity>
     </application>
 
 </manifest>
