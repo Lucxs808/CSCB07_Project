@@ -18,4 +18,7 @@
     <string name="click_to_login">Login Now</string>
     <string name="utorID">UTORid</string>
     <string name="admin_welcome">Welcome Admin!</string>
+    <string name="announcements">Announcements</string>
+    <string name="events">Events</string>
+    <string name="complaints">Complaints</string>
 </resources>

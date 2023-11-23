@@ -32,35 +32,35 @@
         android:layout_marginBottom="16dp"/>
 
     <Button
-        android:id="@+id/buttonOption1"
+        android:id="@+id/Announcements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 1"
+        android:text="@string/announcements"
         android:layout_below="@id/adminWelcomeText"
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/buttonOption2"
+        android:id="@+id/Events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 2"
-        android:layout_below="@id/buttonOption1"
+        android:text="@string/events"
+        android:layout_below="@id/Announcements"
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/buttonOption3"
+        android:id="@+id/Complaints"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 3"
-        android:layout_below="@id/buttonOption2"
+        android:text="@string/complaints"
+        android:layout_below="@id/Events"
         android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_below="@id/buttonOption3"
+        android:text="@string/logout"
+        android:layout_below="@id/Complaints"
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
