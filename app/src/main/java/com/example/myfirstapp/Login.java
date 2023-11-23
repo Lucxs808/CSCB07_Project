@@ -51,7 +51,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         // Test
-                        Log.d("FirebaseDebug", "Snapshot: " + snapshot.getValue());
+                        //Log.d("FirebaseDebug", "Snapshot: " + snapshot.getValue());
                         //Check if UTORid exists in the student node
                         if (snapshot.exists()){
                             String storedPassword = snapshot.child("password").getValue(String.class);

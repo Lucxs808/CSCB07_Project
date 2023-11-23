@@ -61,7 +61,7 @@ public class Register extends AppCompatActivity {
                         if(!exists) {
                             Student s = new Student(utorid, password);
                             DatabaseReference d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
-                            StudentReg newStudent = new StudentReg(new StudentView(), d);
+                            StudentReg newStudent = new StudentReg(d);
                             newStudent.pushStudentToDatabase(s);
                             Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
