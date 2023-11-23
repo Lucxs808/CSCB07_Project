@@ -11,7 +11,7 @@ public class StudentReg {
         this.database = d;
     }
     public void pushStudentToDatabase(Student s){
-        this.database.child("students").child(s.getUtorID()).setValue(s);
+        this.database.child("users").child("students").child(s.getUtorID()).setValue(s);
 
     }
 }
