@@ -21,4 +21,9 @@
     <string name="announcements">Announcements</string>
     <string name="events">Events</string>
     <string name="complaints">Complaints</string>
+    <string name="submit_complaint">Submit a Complaint</string>
+    <string name="post">Post Checker</string>
+    <string name="notifications">View Events and Announcements</string>
+    <string name="registerevent">RSVP for an Event</string>
+    <string name="eventrating">Submit a Review for an Event</string>
 </resources>

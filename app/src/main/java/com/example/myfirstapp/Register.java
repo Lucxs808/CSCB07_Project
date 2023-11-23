@@ -41,10 +41,10 @@ public class Register extends AppCompatActivity {
         registerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String utorID = String.valueOf(editTextUtorID.getText());
+                String utorid = String.valueOf(editTextUtorID.getText());
                 String password = String.valueOf(editTextPassword.getText());
 
-                if(TextUtils.isEmpty(utorID)){
+                if(TextUtils.isEmpty(utorid)){
                     Toast.makeText(Register.this,"Enter utorID",Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -52,15 +52,16 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this,"Enter Password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Student s = new Student(utorID,password);
+                Student s = new Student(utorid,password);
                 DatabaseReference d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
                 StudentReg newStudent = new StudentReg(new StudentView(), d);
                 newStudent.pushStudentToDatabase(s);
                 Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("utorID",utorid);
+                intent.putExtra("password", password);
                 startActivity(intent);
                 finish();
-
             }
         });
 

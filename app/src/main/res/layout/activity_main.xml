@@ -18,31 +18,37 @@
         android:textColor="@android:color/white"/>
 
     <Button
-        android:id="@+id/buttonOption1"
+        android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 1"
+        android:text="@string/post"
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/buttonOption2"
+        android:id="@+id/submitcomplaint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 2"
+        android:text="@string/submit_complaint"
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/buttonOption3"
+        android:id="@+id/notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 3"
+        android:text="@string/notifications"
         android:layout_marginTop="16dp"/>
 
     <Button
-        android:id="@+id/buttonOption4"
+        android:id="@+id/eventregister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Option 4"
+        android:text="@string/registerevent"
+        android:layout_marginTop="16dp"/>
+    <Button
+        android:id="@+id/eventrating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/eventrating"
         android:layout_marginTop="16dp"/>
 
     <Button
