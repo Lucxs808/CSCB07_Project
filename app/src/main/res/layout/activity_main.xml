@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,14 +11,45 @@
 
     <TextView
         android:id="@+id/user_details"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Hi"/>
+        android:layout_height="wrap_content"
+        android:text="Student Page"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"/>
 
     <Button
-        android:text="@string/logout"
-        android:id="@+id/logout"
+        android:id="@+id/buttonOption1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
+        android:text="Option 1"
+        android:layout_marginTop="16dp"/>
 
-  </LinearLayout>
+    <Button
+        android:id="@+id/buttonOption2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 2"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonOption3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 3"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonOption4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 4"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

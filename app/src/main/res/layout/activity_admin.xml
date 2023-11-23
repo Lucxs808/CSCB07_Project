@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!-- res/layout/activity_admin.xml -->
+
+<!-- res/layout/activity_admin.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".MainActivity">
+    android:padding="16dp"
+    tools:context=".AdminPage">
 
     <TextView
         android:id="@+id/user_details"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="Admin Page"/>
+        android:layout_height="wrap_content"
+        android:text="Admin Page"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/adminWelcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin_welcome"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/user_details"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
 
     <Button
-        android:text="@string/logout"
-        android:id="@+id/logout"
+        android:id="@+id/buttonOption1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
+        android:text="Option 1"
+        android:layout_below="@id/adminWelcomeText"
+        android:layout_marginTop="16dp"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/buttonOption2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 2"
+        android:layout_below="@id/buttonOption1"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/buttonOption3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 3"
+        android:layout_below="@id/buttonOption2"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_below="@id/buttonOption3"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

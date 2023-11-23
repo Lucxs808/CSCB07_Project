@@ -16,5 +16,6 @@
     <string name="logout">Logout</string>
     <string name="click_to_register">Register Now</string>
     <string name="click_to_login">Login Now</string>
-    <string name="utorID">utorID</string>
+    <string name="utorID">UTORid</string>
+    <string name="admin_welcome">Welcome Admin!</string>
 </resources>
