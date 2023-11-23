@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
+    utoridDatabaseChecker checkUtorid = new utoridDatabaseChecker();
     TextInputEditText editTextUtorID;
     TextInputEditText editTextPassword;
     Button registerbtn;
@@ -52,16 +53,28 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this,"Enter Password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Student s = new Student(utorid,password);
-                DatabaseReference d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
-                StudentReg newStudent = new StudentReg(new StudentView(), d);
-                newStudent.pushStudentToDatabase(s);
-                Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("utorID",utorid);
-                intent.putExtra("password", password);
-                startActivity(intent);
-                finish();
+                checkUtorid.checkUtorIDExists(utorid, new utoridDatabaseChecker.UtorIDCheckListener(){
+                    @Override
+                    public void onUtorIDCheckResult(boolean exists) {
+                        //runs if not admin or student
+                        //will show toast if duplicate
+                        if(!exists) {
+                            Student s = new Student(utorid, password);
+                            DatabaseReference d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
+                            StudentReg newStudent = new StudentReg(new StudentView(), d);
+                            newStudent.pushStudentToDatabase(s);
+                            Toast.makeText(Register.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("utorID", utorid);
+                            intent.putExtra("password", password);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            // UTORid already exists
+                            Toast.makeText(Register.this, "UToid already exists, choose a different UTORid", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
