@@ -10,7 +10,10 @@ public class StudentReg {
         this.database = d;
     }
     public void pushStudentToDatabase(Student s){
-        this.database.child("users").child("students").child(s.getUtorID()).setValue(s);
-
+        DatabaseReference studentRef = this.database.child("users").child("students").child(s.getUtorID());
+        studentRef.child("utorID").setValue(s.getUtorID());
+        studentRef.child("password").setValue(s.getPassword());
+        studentRef.child("grades").setValue(s.hasGrades());
+        studentRef.child("marksList").setValue(s.getMarks());
     }
 }

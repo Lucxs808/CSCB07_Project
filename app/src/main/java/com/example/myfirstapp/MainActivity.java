@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         if (intent != null) {
             String utorid = intent.getStringExtra("utorID");
             String password = intent.getStringExtra("password");
+            boolean hasGrades = intent.getBooleanExtra("hasGrades", false);
+            int[] marks = intent.getIntArrayExtra("marks");
             //Log.d("MainActivityDebug", "Received utorid: " + utorid);
             //Log.d("MainActivityDebug", "Received password: " + password);
 
@@ -59,5 +61,20 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+/*
+        Button post_checker = findViewById(R.id.post);
+        gradesAvailable =
+        post_checker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (gradesAvailable) {
+                    Intent intent = new Intent(MainActivity.this, Button1Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, InputGradesActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }); */
     }
 }

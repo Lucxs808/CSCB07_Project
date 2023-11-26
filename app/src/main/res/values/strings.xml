@@ -26,4 +26,5 @@
     <string name="notifications">View Events and Announcements</string>
     <string name="registerevent">RSVP for an Event</string>
     <string name="eventrating">Submit a Review for an Event</string>
+    <string name="post_checker">POSt Checker</string>
 </resources>
