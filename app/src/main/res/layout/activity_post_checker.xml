@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".POStChecker">
+
+    <TextView
+        android:id="@+id/textProgramsAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Programs Available:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textProgram1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Program 1"
+        android:layout_below="@id/textProgramsAvailable"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textProgram2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Program 2"
+        android:layout_below="@id/textProgram1"
+        android:layout_marginTop="8dp"/>
+
+</RelativeLayout>

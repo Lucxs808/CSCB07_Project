@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,11 +50,16 @@ public class InputGrades extends AppCompatActivity {
                 marksList.add(a37marks);
                 marksList.add(a22marks);
                 updateFirebase();
+                Intent intent = new Intent(InputGrades.this, POStChecker.class);
+                intent.putExtra("utorid", utorid);
+                intent.putIntegerArrayListExtra("marks", marksList);
+                startActivity(intent);
             }
         });
     }
     private void updateFirebase() {
         utorid = getIntent().getStringExtra("utorid");
         databaseReference.child(utorid).child("marksList").setValue(marksList);
+        databaseReference.child(utorid).child("grades").setValue(true);
     }
 }

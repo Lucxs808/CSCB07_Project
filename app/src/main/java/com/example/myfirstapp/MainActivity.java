@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
-
     DatabaseReference d;
     Button button;
     TextView user_details;
@@ -81,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     intent.putIntegerArrayListExtra("marks", finalMarks);
                 } else {
                     intent = new Intent(MainActivity.this, POStChecker.class);
+                    intent.putExtra("utorid", finalUtorid);
+                    intent.putExtra("hasGrades", finalHasGrades);
+                    intent.putIntegerArrayListExtra("marks", finalMarks);
                 }
                 startActivity(intent);
             }
