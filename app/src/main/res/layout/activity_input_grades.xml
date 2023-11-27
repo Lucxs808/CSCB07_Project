@@ -1,0 +1,55 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/CSCA08"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter CSCA08 Numeric Grade (if taken)"/>
+
+    <EditText
+        android:id="@+id/CSCA20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter CSCA20 Numeric Grade (if taken)"/>
+
+    <EditText
+        android:id="@+id/CSCA48"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter CSCA48 Numeric Grade (if taken)"/>
+
+    <EditText
+        android:id="@+id/CSCA67"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter CSC/MATA67 Numeric Grade (if taken)"/>
+
+    <EditText
+        android:id="@+id/MATA31"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter MATA31 Numeric Grade (if taken)"/>
+
+    <EditText
+        android:id="@+id/MATA37"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter MATA37 Numeric Grade (if taken)"/>
+
+    <EditText
+        android:id="@+id/MATA22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter MATA22 Numeric Grade (if taken)"/>
+
+    <Button
+        android:id="@+id/Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Grades" />
+</LinearLayout>

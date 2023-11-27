@@ -19,6 +19,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     DatabaseReference d;
@@ -28,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        String utorid = null;
+        boolean hasGrades = false;
+        ArrayList<Integer> marks = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0));
         Intent intent = getIntent();
         if (intent != null) {
-            String utorid = intent.getStringExtra("utorID");
+            utorid = intent.getStringExtra("utorID");
             String password = intent.getStringExtra("password");
-            boolean hasGrades = intent.getBooleanExtra("hasGrades", false);
-            int[] marks = intent.getIntArrayExtra("marks");
+            hasGrades = intent.getBooleanExtra("hasGrades", false);
+            marks = intent.getIntegerArrayListExtra("marks");
             //Log.d("MainActivityDebug", "Received utorid: " + utorid);
             //Log.d("MainActivityDebug", "Received password: " + password);
 
@@ -61,20 +66,24 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-/*
         Button post_checker = findViewById(R.id.post);
-        gradesAvailable =
+        boolean finalHasGrades = hasGrades;
+        ArrayList<Integer> finalMarks = marks;
+        String finalUtorid = utorid;
         post_checker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (gradesAvailable) {
-                    Intent intent = new Intent(MainActivity.this, Button1Activity.class);
-                    startActivity(intent);
+                Intent intent;
+                if (!finalHasGrades) {
+                    intent = new Intent(MainActivity.this, InputGrades.class);
+                    intent.putExtra("utorid", finalUtorid);
+                    intent.putExtra("hasGrades", finalHasGrades);
+                    intent.putIntegerArrayListExtra("marks", finalMarks);
                 } else {
-                    Intent intent = new Intent(MainActivity.this, InputGradesActivity.class);
-                    startActivity(intent);
+                    intent = new Intent(MainActivity.this, POStChecker.class);
                 }
+                startActivity(intent);
             }
-        }); */
+        });
     }
 }

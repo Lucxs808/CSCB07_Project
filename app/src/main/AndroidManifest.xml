@@ -34,6 +34,14 @@
             android:name=".AdminPage"
             android:theme="@style/Theme.Material3.Dark.NoActionBar"
             android:exported="true"/>
+        <activity
+            android:name=".InputGrades"
+            android:theme="@style/Theme.Material3.Dark.NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".POStChecker"
+            android:theme="@style/Theme.Material3.Dark.NoActionBar"
+            android:exported="true" />
     </application>
 
 </manifest>
