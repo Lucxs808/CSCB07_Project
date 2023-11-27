@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import androidx.annotation.Nullable;
 
 public class POStChecker extends AppCompatActivity {
-    String utorid = getIntent().getStringExtra("utorid");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_checker);
 
+        String utorid = getIntent().getStringExtra("utorid");
         TextView textProgramsAvailable = findViewById(R.id.textProgramsAvailable);
         TextView textProgram1 = findViewById(R.id.textProgram1);
         TextView textProgram2 = findViewById(R.id.textProgram2);

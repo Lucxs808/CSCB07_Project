@@ -54,6 +54,7 @@ public class InputGrades extends AppCompatActivity {
                 intent.putExtra("utorid", utorid);
                 intent.putIntegerArrayListExtra("marks", marksList);
                 startActivity(intent);
+                finish();
             }
         });
     }
