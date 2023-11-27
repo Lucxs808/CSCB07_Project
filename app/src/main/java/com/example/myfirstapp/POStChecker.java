@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import androidx.annotation.Nullable;
 
 public class POStChecker extends AppCompatActivity {
-    String utorid = getIntent().getStringExtra("utorid");
-    ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marks");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_checker);
 
+        String utorid = getIntent().getStringExtra("utorid");
         TextView textProgramsAvailable = findViewById(R.id.textProgramsAvailable);
         TextView textProgram1 = findViewById(R.id.textProgram1);
         TextView textProgram2 = findViewById(R.id.textProgram2);
+        ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marks");
 
         boolean isEligibleForProgram1 = checkEligibilityForProgram1(marks);
         boolean isEligibleForProgram2 = checkEligibilityForProgram2(marks);
