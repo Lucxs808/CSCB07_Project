@@ -17,6 +17,7 @@ public class POStChecker extends AppCompatActivity {
         TextView textProgramsAvailable = findViewById(R.id.textProgramsAvailable);
         TextView textProgram1 = findViewById(R.id.textProgram1);
         TextView textProgram2 = findViewById(R.id.textProgram2);
+        //Fixed
         ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marksList");
 
         boolean isEligibleForProgram1 = checkEligibilityForProgram1(marks);
