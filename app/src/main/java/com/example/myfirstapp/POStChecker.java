@@ -17,7 +17,7 @@ public class POStChecker extends AppCompatActivity {
         TextView textProgramsAvailable = findViewById(R.id.textProgramsAvailable);
         TextView textProgram1 = findViewById(R.id.textProgram1);
         TextView textProgram2 = findViewById(R.id.textProgram2);
-        ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marks");
+        ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marksList");
 
         boolean isEligibleForProgram1 = checkEligibilityForProgram1(marks);
         boolean isEligibleForProgram2 = checkEligibilityForProgram2(marks);
@@ -36,10 +36,15 @@ public class POStChecker extends AppCompatActivity {
     }
 
     private double calculateAverageMarks(ArrayList<Integer> marks) {
-        int sum = 0;
-        for (int mark : marks) {
-            sum += mark;
+        if (marks != null && !marks.isEmpty()) {
+            int sum = 0;
+            for (int mark : marks) {
+                sum += mark;
+            }
+            return (double) sum / marks.size();
+        } else {
+            // Handle the case where marks is null or empty
+            return 0.0; // or any default value you prefer
         }
-        return (double) sum / marks.size();
     }
 }
