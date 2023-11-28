@@ -59,7 +59,6 @@ public class Login extends AppCompatActivity {
                                 //password matches, login successful
                                 Intent intent = new Intent(Login.this, MainActivity.class);
                                 intent.putExtra("utorID",utorid);
-                                intent.putExtra("password", password);
                                 startActivity(intent);
                                 finish();
                             }else{
@@ -93,23 +92,22 @@ public class Login extends AppCompatActivity {
         d.child("admin").child(utorid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-               // Check if UTORid is in the admin node
-               if (snapshot.exists()){
-                   // Check if the password matches
-                   String storedPassword = snapshot.child("password").getValue(String.class);
-                   if (password.equals(storedPassword)){
-                       // Password matches, login successful for admin
-                       Intent intent = new Intent(Login.this, AdminPage.class);
-                       intent.putExtra("utorID",utorid);
-                       intent.putExtra("password", password);
-                       startActivity(intent);
-                       finish();
-                   }else{
-                       Toast.makeText(Login.this,"Incorrect Password",Toast.LENGTH_SHORT).show();
-                   }
-               }else{
-                   Toast.makeText(Login.this,"UTORid Not Found",Toast.LENGTH_SHORT).show();
-               }
+                // Check if UTORid is in the admin node
+                if (snapshot.exists()){
+                    // Check if the password matches
+                    String storedPassword = snapshot.child("password").getValue(String.class);
+                    if (password.equals(storedPassword)){
+                        // Password matches, login successful for admin
+                        Intent intent = new Intent(Login.this, AdminPage.class);
+                        intent.putExtra("utorID",utorid);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(Login.this,"Incorrect Password",Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(Login.this,"UTORid Not Found",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
