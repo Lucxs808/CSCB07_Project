@@ -42,6 +42,15 @@
             android:name=".POStChecker"
             android:theme="@style/Theme.Material3.Dark.NoActionBar"
             android:exported="true" />
+        <activity
+            android:name=".AnnounceEventActivity"
+            android:label="Announce Event">
+        </activity>
+        <activity
+            android:name=".ViewEventsActivity"
+            android:label="View Events">
+        </activity>
+
     </application>
 
 </manifest>

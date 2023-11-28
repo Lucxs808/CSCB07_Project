@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AnnounceEventActivity">
+
+    <EditText
+        android:id="@+id/editTextEventName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Event Name"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date (MM/DD/YY)"
+        android:layout_below="@id/editTextEventName"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time (Please specify AM/PM)"
+        android:layout_below="@id/editTextDate"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:layout_below="@id/editTextTime"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/announceEventBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Announce Event"
+        android:layout_below="@id/editTextLocation"
+        android:layout_marginTop="16dp"
+        android:onClick="onAnnounceEventClick" />
+</RelativeLayout>
