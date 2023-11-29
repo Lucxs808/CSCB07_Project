@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/announcements"
         android:layout_below="@id/adminWelcomeText"
+        android:onClick="onViewAnnouncementClick"
         android:layout_marginTop="16dp"/>
 
     <Button

@@ -108,4 +108,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void onViewNotificationClick(View view) {
+        Intent intent = new Intent(this, NotificationBoard.class);
+        startActivity(intent);
+    }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin_id"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Announcement_view"
+        android:layout_width="377dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Admin"
+        android:layout_marginTop="8dp"
+        android:text="@string/announcement" />
+
+    <TextView
+        android:id="@+id/Announce_date"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_toEndOf="@id/Admin"
+        android:text="@string/announcement_date" />
+
+</RelativeLayout>
