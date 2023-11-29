@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminAnnounce">
+
+    <EditText
+        android:id="@+id/editAnnounceDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date (MM/DD/YY)"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/editAnnounceContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Announcement (Please enter the announcement)"
+        android:layout_below="@id/editAnnounceDate"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/MakeAnnounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/make_announcement"
+        android:layout_below="@id/editAnnounceContent"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>
