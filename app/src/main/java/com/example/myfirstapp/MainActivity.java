@@ -3,7 +3,11 @@ package com.example.myfirstapp;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import androidx.core.view.WindowCompat;
 import androidx.navigation.NavController;
@@ -11,8 +15,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.example.myfirstapp.databinding.ActivityMainBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,37 +33,21 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference d;
     Button button;
     TextView user_details;
+    String utorid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String utorid = null;
-        boolean hasGrades = false;
-        ArrayList<Integer> marks = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0));
-        Intent intent = getIntent();
-        if (intent != null) {
-            utorid = intent.getStringExtra("utorID");
-            String password = intent.getStringExtra("password");
-            hasGrades = intent.getBooleanExtra("hasGrades", false);
-            marks = intent.getIntegerArrayListExtra("marks");
-            //Log.d("MainActivityDebug", "Received utorid: " + utorid);
-            //Log.d("MainActivityDebug", "Received password: " + password);
 
-            if (utorid != null) {
-                user_details = findViewById(R.id.user_details);
-                user_details.setText("Welcome! " + utorid);
-            } else {
-                //Log.e("AdminPageDebug", "Received utorid is null");
-                user_details.setText("Welcome!");
-            }
-        } else {
-            //Log.e("AdminPageDebug", "Intent is null");
-            user_details.setText("Welcome!");
-        }
+        // Initilzing utorid: Getting utorID from extra (Login)
+        utorid = getIntent().getStringExtra("utorID");
+        //Displaying Welcome message on activity_main page
+        user_details = findViewById(R.id.user_details);
+        user_details.setText("Welcome! " + utorid);
 
         d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
+        // Logout Button returns back to login page
         button = findViewById(R.id.logout);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,26 +56,55 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //First User Story (POSt Checker)
         Button post_checker = findViewById(R.id.post);
-        boolean finalHasGrades = hasGrades;
-        ArrayList<Integer> finalMarks = marks;
-        String finalUtorid = utorid;
+        DatabaseReference studentsRef = FirebaseDatabase.getInstance().getReference().child("users").child("students");
         post_checker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent;
-                if (!finalHasGrades) {
-                    intent = new Intent(MainActivity.this, InputGrades.class);
-                    intent.putExtra("utorid", finalUtorid);
-                    intent.putExtra("hasGrades", finalHasGrades);
-                    intent.putIntegerArrayListExtra("marks", finalMarks);
-                } else {
-                    intent = new Intent(MainActivity.this, POStChecker.class);
-                    intent.putExtra("utorid", finalUtorid);
-                    intent.putExtra("hasGrades", finalHasGrades);
-                    intent.putIntegerArrayListExtra("marks", finalMarks);
-                }
-                startActivity(intent);
+                DatabaseReference studentRef = studentsRef.child(utorid);
+                studentRef.child("grades").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Boolean hasGrades = dataSnapshot.getValue(Boolean.class);
+                        if (hasGrades != null && hasGrades) {
+                            studentRef.child("marksList").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot gradeListSnapshot) {
+                                    ArrayList<Integer> finalGradeList = new ArrayList<>();
+                                    for (DataSnapshot gradeSnapshot : gradeListSnapshot.getChildren()) {
+                                        Integer grade = gradeSnapshot.getValue(Integer.class);
+                                        if (grade != null) {
+                                            finalGradeList.add(grade);
+                                        }
+                                    }
+                                    //Log.d("FirebaseDebug", "utorid: " + utorid);
+                                    //Log.d("FirebaseDebug", "hasGrades: " + hasGrades);
+                                    //Log.d("FirebaseDebug", "finalGradeList: " + finalGradeList);
+                                    Intent intent = new Intent(MainActivity.this, POStChecker.class);
+                                    intent.putExtra("utorid", utorid);
+                                    intent.putIntegerArrayListExtra("marksList", finalGradeList);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Log.d("FirebaseDebug", "Error");
+                                }
+                            });
+                        } else {
+                            // If hasGrades is not true, this means marks still need to be inputted.
+                            Intent intent = new Intent(MainActivity.this, InputGrades.class);
+                            intent.putExtra("utorid", utorid);
+                            startActivity(intent);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("FirebaseDebug", "Error");
+                    }
+                });
             }
         });
     }
