@@ -19,7 +19,7 @@
     <string name="utorID">UTORid</string>
     <string name="admin_welcome">Welcome Admin!</string>
     <string name="announcements">Announcements</string>
-    <string name="events">Events</string>
+    <string name="events">Announce Event</string>
     <string name="complaints">Complaints</string>
     <string name="submit_complaint">Submit a Complaint</string>
     <string name="post">Post Checker</string>

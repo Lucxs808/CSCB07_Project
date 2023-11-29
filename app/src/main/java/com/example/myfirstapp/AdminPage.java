@@ -63,4 +63,14 @@ public class AdminPage extends AppCompatActivity {
         });
 
     }
+
+    // Method to handle the button click and launch the event announcement page
+    public void onAnnounceEventClick(View view) {
+        Intent intent = new Intent(this, AnnounceEventActivity.class);
+        startActivity(intent);
+    }
+    public void onViewEventsClick(View view) {
+        Intent intent = new Intent(this, ViewEventsActivity.class);
+        startActivity(intent);
+    }
 }

@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- res/layout/activity_admin.xml -->
-
-<!-- res/layout/activity_admin.xml -->
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -45,7 +41,8 @@
         android:layout_height="wrap_content"
         android:text="@string/events"
         android:layout_below="@id/Announcements"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:onClick="onAnnounceEventClick"/>
 
     <Button
         android:id="@+id/Complaints"
@@ -56,11 +53,30 @@
         android:layout_marginTop="16dp"/>
 
     <Button
+        android:id="@+id/viewEventsBtn"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Complaints"
+        android:layout_marginTop="16dp"
+        android:onClick="onViewEventsClick"
+        android:text="View Events" />
+
+    <Button
+        android:id="@+id/makeAnnouncementBtn"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewEventsBtn"
+        android:layout_marginTop="16dp"
+        android:onClick="onMakeAnnouncementClick"
+        android:text="Make Announcement" />
+
+    <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:layout_below="@id/Complaints"
-        android:layout_marginTop="16dp"/>
+        android:layout_below="@id/makeAnnouncementBtn"
+        android:layout_marginTop="43dp"
+        android:text="@string/logout" />
+
 
 </RelativeLayout>
