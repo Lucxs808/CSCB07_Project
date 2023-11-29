@@ -6,6 +6,7 @@
     android:padding="16dp"
     tools:context=".POStChecker">
 
+
     <TextView
         android:id="@+id/textProgramsAvailable"
         android:layout_width="wrap_content"
@@ -16,20 +17,153 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"/>
 
+    <EditText
+        android:id="@+id/Title_Comp_Sci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textProgramsAvailable"
+        android:layout_marginTop="8dp"
+        android:background="#CCCCCC"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:text="Computer Science"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
     <TextView
-        android:id="@+id/textProgram1"
+        android:id="@+id/Minor_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Program 1"
-        android:layout_below="@id/textProgramsAvailable"
+        android:text="Minor in Computer Science: "
+        android:layout_below="@id/Title_Comp_Sci"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/Major_Computer_Science"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Major in Computer Science: "
+        android:layout_below="@id/Minor_Computer_Science"
         android:layout_marginTop="8dp"/>
 
     <TextView
-        android:id="@+id/textProgram2"
+        android:id="@+id/Major_Coop_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Program 2"
-        android:layout_below="@id/textProgram1"
+        android:text="Major(Coop) in Computer Science: "
+        android:layout_below="@id/Major_Computer_Science"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Specialist_Computer_Science"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialist in Computer Science: "
+        android:layout_below="@id/Major_Coop_Computer_Science"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Specialist_Coop_Computer_Science"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialist(Coop) in Computer Science: "
+        android:layout_below="@id/Specialist_Computer_Science"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/Title_Math"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCCCCC"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:text="Mathematics"
+        android:layout_below="@id/Specialist_Coop_Computer_Science"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Major_Math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Major in Mathematics: "
+        android:layout_below="@id/Title_Math"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/Major_Coop_Math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Major(Coop) in Mathematics: "
+        android:layout_below="@id/Major_Math"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Specialist_Math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialist in Mathematics: "
+        android:layout_below="@id/Major_Coop_Math"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Specialist_Coop_Math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialist(Coop) in Mathematics: "
+        android:layout_below="@id/Specialist_Math"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/Title_Stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CCCCCC"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:text="Statistics"
+        android:layout_below="@id/Specialist_Coop_Math"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Major_Stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Major in Statistics: "
+        android:layout_below="@id/Title_Stats"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/Major_Coop_Stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Major(Coop) in Statistics: "
+        android:layout_below="@id/Major_Stats"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Specialist_Stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialist in Statistics: "
+        android:layout_below="@id/Major_Coop_Stats"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Specialist_Coop_Stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specialist(Coop) in Statistics: "
+        android:layout_below="@id/Specialist_Stats"
         android:layout_marginTop="8dp"/>
 
 </RelativeLayout>
