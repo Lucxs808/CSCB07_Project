@@ -15,7 +15,7 @@ public class Event {
         // Default constructor required for Firebase
         rsvpList = new ArrayList<>();
     }
-
+// hello
     public Event(String name, String date, String time, String location) {
         this.name = name;
         this.date = date;
