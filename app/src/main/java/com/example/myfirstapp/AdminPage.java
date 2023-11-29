@@ -26,6 +26,7 @@ public class AdminPage extends AppCompatActivity {
     DatabaseReference d;
     Button button;
     TextView admin_welcome;
+    String utorid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class AdminPage extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            String utorid = intent.getStringExtra("utorID");
+            utorid = intent.getStringExtra("utorID");
             String password = intent.getStringExtra("password");
             //Log.d("AdminPageDebug", "Received utorid: " + utorid);
             //Log.d("AdminPageDebug", "Received password: " + password);
@@ -71,6 +72,18 @@ public class AdminPage extends AppCompatActivity {
     }
     public void onViewEventsClick(View view) {
         Intent intent = new Intent(this, ViewEventsActivity.class);
+        startActivity(intent);
+    }
+
+    public void onViewAnnouncementClick(View view) {
+        Intent intent = new Intent(this, ViewAnnouncements.class);
+        intent.putExtra("AdminID", utorid);
+        startActivity(intent);
+    }
+
+    public void onMakeAnnouncementClick(View view) {
+        Intent intent = new Intent(this, AdminAnnounce.class);
+        intent.putExtra("AdminID", utorid);
         startActivity(intent);
     }
 }

@@ -1,6 +1,7 @@
 // AnnounceEventActivity.java
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -68,5 +69,10 @@ public class AnnounceEventActivity extends AppCompatActivity {
 
         // Finish the activity or navigate back to the admin page
         finish();
+    }
+
+    public void onBackButton1Click(View view) {
+        Intent intent = new Intent(this, AdminPage.class);
+        startActivity(intent);
     }
 }

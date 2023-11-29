@@ -50,6 +50,15 @@
             android:name=".ViewEventsActivity"
             android:label="View Events">
         </activity>
+        <activity
+            android:name=".AdminAnnounce"
+            android:label="Make Announcement" />
+        <activity
+            android:name=".ViewAnnouncements"
+            android:label="View Announcements" />
+        <activity
+            android:name=".NotificationBoard"
+            android:label="View Notifications" />
 
     </application>
 
