@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/eventNameTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/event_name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/eventDateTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventNameTextView1"
+        android:layout_marginTop="8dp"
+        android:text="@string/event_date" />
+
+    <TextView
+        android:id="@+id/eventTimeTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventDateTextView1"
+        android:layout_marginTop="8dp"
+        android:text="@string/event_time" />
+
+    <TextView
+        android:id="@+id/eventLocationTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTimeTextView1"
+        android:layout_marginTop="8dp"
+        android:text="@string/event_location" />
+
+    <Button
+        android:id="@+id/rsvp_button"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/eventLocationTextView1"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/rsvp"
+        android:textSize="12sp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/comment_button"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/rsvp_button"
+
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/comment"
+        android:textSize="12sp"
+        android:visibility="visible" />
+
+</RelativeLayout>

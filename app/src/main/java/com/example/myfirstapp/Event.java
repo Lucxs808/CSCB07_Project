@@ -2,6 +2,7 @@
 package com.example.myfirstapp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Event {
@@ -9,30 +10,20 @@ public class Event {
     private String date;
     private String time;
     private String location;
-    private List<String> attendees;
-    private List<String> rsvpList;
+    private HashMap<String, Boolean> attendances;
     private String id;
 
     public Event() {
-        // initialize the list when creating a new event
-        attendees = new ArrayList<>();
-        rsvpList = new ArrayList<>();
+        // Default constructor required for Firebase
+       attendances = new HashMap<>();
     }
 
-    public List<String> getAttendees() {
-        return attendees;
-    }
-
-//    public Event() { REMOVE THIS
-//        // Default constructor required for Firebase
-//        rsvpList = new ArrayList<>();
-//    }
-// hello
     public Event(String name, String date, String time, String location) {
         this.name = name;
         this.date = date;
         this.time = time;
         this.location = location;
+        this.attendances = new HashMap<>();
     }
 
     public String getName() {
@@ -66,22 +57,26 @@ public class Event {
     public void setLocation(String location) {
         this.location = location;
     }
+    public HashMap<String, Boolean> getAttendances(){
+        return attendances;
+    }
+
+    public void setAttendances(HashMap<String, Boolean> attendances){
+        this.attendances = attendances;
+    }
+
+    public void addAttendance(String utorid){
+        if (this.attendances == null){
+            this.attendances = new HashMap<>();
+        }
+        this.attendances.put(utorid, true);
+    }
+
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String id){
         this.id = id;
-    }
-    public List<String> getRsvpList() {
-        return rsvpList;
-    }
-
-    public boolean hasStudentRSVPed(String studentUtorID) {
-        return rsvpList.contains(studentUtorID);
-    }
-
-    public void addRSVP(String studentUtorID) {
-        rsvpList.add(studentUtorID);
     }
 }

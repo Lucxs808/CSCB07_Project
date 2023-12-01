@@ -42,21 +42,22 @@
 
     <Button
         android:id="@+id/announceEventBtn"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Announce Event"
         android:layout_below="@id/editTextLocation"
         android:layout_marginTop="16dp"
-        android:onClick="onAnnounceEventClick" />
+        android:layout_marginStart="140dp"
+        android:onClick="onAnnounceEventClick"
+        android:text="@string/announce" />
 
     <Button
         android:id="@+id/back_button1"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextLocation"
-        android:layout_marginStart="165dp"
-        android:layout_marginTop="16dp"
-        android:layout_toEndOf="@+id/announceEventBtn"
-        android:text="Back"
-        android:onClick="onBackButton1Click"/>
+        android:layout_below="@id/announceEventBtn"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="0dp"
+        android:text="Back" />
 </RelativeLayout>
