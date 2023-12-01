@@ -22,9 +22,9 @@
     <string name="click_to_login">Login Now</string>
     <string name="utorID">UTORid</string>
     <string name="admin_welcome">Welcome Admin!</string>
-    <string name="announcements">Announcements</string>
+    <string name="announcements">View Announcements</string>
     <string name="events">Announce Event</string>
-    <string name="complaints">Complaints</string>
+    <string name="complaints">View Complaints</string>
     <string name="submit_complaint">Submit a Complaint</string>
     <string name="post">Post Checker</string>
     <string name="notifications">View Events and Announcements</string>
@@ -32,9 +32,17 @@
     <string name="eventrating">Submit a Review for an Event</string>
     <string name="post_checker">POSt Checker</string>
     <string name="announcedate">Announcedate</string>
-    <string name="make_announcement">Make Announcement</string>
+    <string name="post_announcement">Post</string>
     <string name="announcement_date">announcement date</string>
     <string name="announcement">Announcement</string>
     <string name="admin_id">Admin ID</string>
     <string name="notification_board">Notification Board</string>
+    <string name="comment">Comment</string>
+    <string name="rsvp">RSVP</string>
+    <string name="event_location">Event Location</string>
+    <string name="event_time">Event Time</string>
+    <string name="event_date">Event Date</string>
+    <string name="event_name">Event Name</string>
+    <string name="announce">Announce</string>
+    <string name="admin_page">Admin Page</string>
 </resources>
