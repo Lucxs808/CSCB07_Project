@@ -1,9 +1,11 @@
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +17,7 @@ public class AdminAnnounce extends AppCompatActivity {
     private EditText ContentEdit;
     private Button MakeAnnounce;
     private String ID;
+    private Button backButton;
 
     private DatabaseReference announcementsReference;
 
@@ -30,6 +33,7 @@ public class AdminAnnounce extends AppCompatActivity {
         DateEdit = findViewById(R.id.editAnnounceDate );
         ContentEdit = findViewById(R.id.editAnnounceContent);
         MakeAnnounce = findViewById(R.id.MakeAnnounce);
+        backButton = findViewById(R.id.back_button2);
 
         //Used for storing in firebase
         ID = getIntent().getStringExtra("AdminID");
@@ -38,6 +42,16 @@ public class AdminAnnounce extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 makeAnnouncement();
+                Toast.makeText(AdminAnnounce.this,"You have posted a new announcement",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -56,6 +70,5 @@ public class AdminAnnounce extends AppCompatActivity {
         String announcementKey = announcementsReference.push().getKey();
         announcementsReference.child(announcementKey).setValue(announce);
 
-        finish();
     }
 }

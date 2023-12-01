@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +19,7 @@ public class AnnounceEventActivity extends AppCompatActivity {
     private EditText timeEditText;
     private EditText locationEditText;
     private Button announceEventButton;
+    private Button backButton;
 
     private DatabaseReference eventsReference;
 
@@ -35,12 +37,23 @@ public class AnnounceEventActivity extends AppCompatActivity {
         timeEditText = findViewById(R.id.editTextTime);
         locationEditText = findViewById(R.id.editTextLocation);
         announceEventButton = findViewById(R.id.announceEventBtn);
+        backButton = findViewById(R.id.back_button1);
 
         // Set up click listener for the announce event button
         announceEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 announceEvent();
+                Toast.makeText(AnnounceEventActivity.this,"You have scheduled a new Event",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -66,13 +79,5 @@ public class AnnounceEventActivity extends AppCompatActivity {
         eventsReference.child(eventKey).setValue(event);
 
         // Optionally, provide feedback to the user (e.g., show a toast message)
-
-        // Finish the activity or navigate back to the admin page
-        finish();
-    }
-
-    public void onBackButton1Click(View view) {
-        Intent intent = new Intent(this, AdminPage.class);
-        startActivity(intent);
     }
 }

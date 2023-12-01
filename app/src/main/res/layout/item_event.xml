@@ -5,17 +5,17 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/AdminID"
+        android:id="@+id/eventNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Event Name"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/Announcement_view"
+        android:id="@+id/eventDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/AdminID"
+        android:layout_below="@id/eventNameTextView"
         android:layout_marginTop="8dp"
         android:text="Event Date" />
 
@@ -23,7 +23,7 @@
         android:id="@+id/eventTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Announcement_view"
+        android:layout_below="@id/eventDateTextView"
         android:layout_marginTop="8dp"
         android:text="Event Time" />
 

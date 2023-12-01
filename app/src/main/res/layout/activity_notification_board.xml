@@ -39,10 +39,11 @@
     <Button
         android:id="@+id/back_button"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="89dp"
-        android:layout_height="48dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_marginStart="200dp"
         android:text="back"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toEndOf="@+id/spinnerOption" />
 

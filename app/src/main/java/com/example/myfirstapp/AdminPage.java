@@ -22,7 +22,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class AdminPage extends AppCompatActivity {
-
+    //comment
     DatabaseReference d;
     Button button;
     TextView admin_welcome;
