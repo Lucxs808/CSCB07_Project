@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,34 +93,21 @@ import java.util.List;
 //        }
 //    }
 //}
+// EventAdapter.java
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
     private List<Event> eventList;
-    private DatabaseReference eventsReference;
-    private Student student;
-    private RSVPClickListener listener;
+    private RSVPClickListener rsvpClickListener;
 
-//    public EventAdapter(List<Event> eventList) {
-//        this.eventList = eventList;
-//        this.eventsReference = FirebaseDatabase.getInstance().getReference("events"); // MAYBE REMOVE THIS????
-//    }
-    public interface RSVPClickListener {
-        void onRSVPClicked(Event event);
-    }
-    public void setEventsReference(DatabaseReference eventsReference) {
-        this.eventsReference = eventsReference;
-    }
-
-    public EventAdapter(List<Event> eventList) {
+    public EventAdapter(List<Event> eventList, RSVPClickListener rsvpClickListener) {
         this.eventList = eventList;
-    }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+        // Check if the provided rsvpClickListener is null
+        if (rsvpClickListener == null) {
+            throw new IllegalArgumentException("RSVPClickListener cannot be null");
+        }
 
-    public void setRSVPClickListener(RSVPClickListener listener) {
-        this.listener = listener;
+        this.rsvpClickListener = rsvpClickListener;
     }
 
     @NonNull
@@ -132,8 +120,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event currentEvent = eventList.get(position);
-
-        // Set the event details (name, date, time, location)
         holder.bind(currentEvent);
     }
 
@@ -152,37 +138,26 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
+
             eventNameTextView = itemView.findViewById(R.id.AdminID);
             eventDateTextView = itemView.findViewById(R.id.Announcement_view);
             eventTimeTextView = itemView.findViewById(R.id.eventTimeTextView);
             eventLocationTextView = itemView.findViewById(R.id.eventLocationTextView);
-            rsvpButton = itemView.findViewById(R.id.rsvpButton);  // Initialize rsvpButton
+            rsvpButton = itemView.findViewById(R.id.rsvpButton);
 
             rsvpButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && student != null) {
+                    if (position != RecyclerView.NO_POSITION) {
                         Event selectedEvent = eventList.get(position);
+                        rsvpClickListener.onRSVPClick(selectedEvent);
 
-                        // Check if the student is not already RSVP'd
-                        if (!selectedEvent.hasStudentRSVPed(student.getUtorID())) {
-                            // Add the student to the RSVP list locally
-                            selectedEvent.addRSVP(student.getUtorID());
-
-                            // Notify the activity to update Firebase
-                            if (listener != null) {
-                                listener.onRSVPClicked(selectedEvent);
-                            }
-                        }
+                        // Add a log statement to check if onClick is called
+                        Log.d("RSVP", "Button Clicked for: " + selectedEvent.getName());
                     }
                 }
             });
-        }
-
-        private void updateEvent(Event event) {
-            DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference("events").child(event.getId());
-            eventRef.setValue(event);
         }
 
         public void bind(Event event) {
@@ -193,3 +168,4 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         }
     }
 }
+

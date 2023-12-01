@@ -2,6 +2,8 @@
 package com.example.myfirstapp;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -92,7 +94,8 @@ import java.util.List;
 //        });
 //    }
 //}
-public class ViewEventsActivity extends AppCompatActivity {
+// ViewEventsActivity.java
+public class ViewEventsActivity extends AppCompatActivity implements RSVPClickListener {
 
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
@@ -105,26 +108,16 @@ public class ViewEventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_events);
 
-        // Corrected: Assign to the class-level variable
         eventsReference = FirebaseDatabase.getInstance().getReference("events");
 
-        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize eventList
         eventList = new ArrayList<>();
-        currentStudent = getCurrentStudent(); // Assume 'getCurrentStudent' method properly retrieves the current student
-
-        // Set up the EventAdapter
-        eventAdapter = new EventAdapter(eventList);
-        eventAdapter.setStudent(currentStudent);
-        eventAdapter.setEventsReference(eventsReference);
-        eventAdapter.setRSVPClickListener(new RSVPClickListener(currentStudent, eventsReference)); // Pass the RSVPClickListener
+        eventAdapter = new EventAdapter(eventList, this); // Assuming that 'this' implements RSVPClickListener // Pass the RSVPClickListener
         recyclerView.setAdapter(eventAdapter);
 
-        // Load events from Firebase
         loadEvents();
     }
 
@@ -134,7 +127,6 @@ public class ViewEventsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eventList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    // Handle null data
                     if (snapshot.getValue() != null) {
                         Event event = snapshot.getValue(Event.class);
                         if (event != null) {
@@ -152,9 +144,25 @@ public class ViewEventsActivity extends AppCompatActivity {
         });
     }
 
-    private Student getCurrentStudent() {
-        // Implement the logic to retrieve the current student from shared preferences, database, or any other relevant source
-        // Assuming this method returns a Student object
-        return new Student("studentID", "Student Name"); // Replace with actual implementation
+    public void onRSVPClick(Event event) {
+        if (currentStudent != null) {
+            String studentUtorID = currentStudent.getUtorID();
+            if (!event.hasStudentRSVPed(studentUtorID)) {
+                event.addRSVP(studentUtorID);
+                updateEventInFirebase(event);
+
+                // Add logging to check if this block is executed
+                Log.d("RSVP", "RSVP Clicked: " + event.getName());
+            } else {
+                // Add logging to check if the student has already RSVPed
+                Log.d("RSVP", "Student already RSVPed to: " + event.getName());
+            }
+        }
+    }
+
+    private void updateEventInFirebase(Event event) {
+        DatabaseReference eventRef = eventsReference.child(event.getId());
+        eventRef.setValue(event);
     }
 }
+
