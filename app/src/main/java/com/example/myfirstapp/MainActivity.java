@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference d;
     Button button;
     TextView user_details;
+    Button button1;
     String utorid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         d = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference();
         // Logout Button returns back to login page
         button = findViewById(R.id.logout);
+        button1 = findViewById(R.id.submitcomplaint);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SubmitComplaint.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         //First User Story (POSt Checker)
         Button post_checker = findViewById(R.id.post);

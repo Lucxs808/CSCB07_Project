@@ -33,7 +33,7 @@ public class SubmitComplaint extends AppCompatActivity {
 
 
         // Initialize Firebase
-        complaintsReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("announcements");
+        complaintsReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("complaints");
 
         // Initialize UI elements
         complaintSubjectEditText = findViewById(R.id.csubject);
@@ -70,8 +70,10 @@ public class SubmitComplaint extends AppCompatActivity {
         String complaintKey = complaintsReference.push().getKey();
         complaintsReference.child(complaintKey).setValue(complaint);
 
+        Toast.makeText(SubmitComplaint.this, "You have submitted a complaint", Toast.LENGTH_SHORT).show();
 
-        finish();
+
+
 
     }
 

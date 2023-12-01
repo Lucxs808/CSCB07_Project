@@ -59,6 +59,9 @@
         <activity
             android:name=".NotificationBoard"
             android:label="View Notifications" />
+        <activity
+            android:name=".SubmitComplaint"
+            android:label="Submit Complaint" />
 
     </application>
 
