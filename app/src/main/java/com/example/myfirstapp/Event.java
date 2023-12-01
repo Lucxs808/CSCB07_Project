@@ -1,16 +1,33 @@
 // Event.java
 package com.example.myfirstapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Event {
     private String name;
     private String date;
     private String time;
     private String location;
+    private List<String> attendees;
+    private List<String> rsvpList;
+    private String id;
 
     public Event() {
-        // Default constructor required for Firebase
+        // initialize the list when creating a new event
+        attendees = new ArrayList<>();
+        rsvpList = new ArrayList<>();
     }
 
+    public List<String> getAttendees() {
+        return attendees;
+    }
+
+//    public Event() { REMOVE THIS
+//        // Default constructor required for Firebase
+//        rsvpList = new ArrayList<>();
+//    }
+// hello
     public Event(String name, String date, String time, String location) {
         this.name = name;
         this.date = date;
@@ -48,5 +65,23 @@ public class Event {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public List<String> getRsvpList() {
+        return rsvpList;
+    }
+
+    public boolean hasStudentRSVPed(String studentUtorID) {
+        return rsvpList.contains(studentUtorID);
+    }
+
+    public void addRSVP(String studentUtorID) {
+        rsvpList.add(studentUtorID);
     }
 }
