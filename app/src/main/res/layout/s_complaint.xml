@@ -38,4 +38,13 @@
         android:layout_marginBottom="130dp"
         android:onClick="onComplaintClick"
         android:text="Submit Complaint" />
+    <Button
+        android:id="@+id/back_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submitcbtn"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="10dp"
+        android:text="Back"
+        android:onClick="onBackButton1Clicksc"/>
 </RelativeLayout>
