@@ -1,7 +1,12 @@
 // ViewEventsActivity.java
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +24,7 @@ public class ViewEventsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
+    private Button backButton;
 
     private DatabaseReference eventsReference;
 
@@ -35,6 +41,8 @@ public class ViewEventsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        backButton = findViewById(R.id.back_button3);
+
         // Initialize eventList
         eventList = new ArrayList<>();
 
@@ -42,8 +50,18 @@ public class ViewEventsActivity extends AppCompatActivity {
         eventAdapter = new EventAdapter(eventList);
         recyclerView.setAdapter(eventAdapter);
 
+
         // Load events from Firebase
         loadEvents();
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void loadEvents() {

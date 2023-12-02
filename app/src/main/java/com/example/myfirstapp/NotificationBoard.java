@@ -23,10 +23,13 @@ import java.util.ArrayList;
 
 public class NotificationBoard extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/");
+    private String currentutorid;
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_notification_board);
+
+        currentutorid = getIntent().getStringExtra("utorid");
 
         Spinner spinner = findViewById(R.id.spinnerOption);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -85,6 +88,7 @@ public class NotificationBoard extends AppCompatActivity {
                         if (snapshot.getValue() != null){
                             Event event = snapshot.getValue(Event.class);
                             if (event != null){
+                                event.setId(snapshot.getKey());
                                 notifications.add(event);
                             }
                         }
@@ -101,7 +105,7 @@ public class NotificationBoard extends AppCompatActivity {
     }
 
     private void displayFragment(ArrayList<?> notifications, boolean isAnnouncement){
-        NotificationList fragment = NotificationList.newInstance(notifications, isAnnouncement);
+        NotificationList fragment = NotificationList.newInstance(notifications, isAnnouncement, currentutorid);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
     }
 }
