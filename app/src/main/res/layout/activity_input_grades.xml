@@ -50,6 +50,44 @@
     </RadioGroup>
 
     <EditText
+        android:id="@+id/Title_Coop_Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#CCCCCC"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/Coop_Status"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:inputType="text"
+        tools:ignore="LabelFor,VisualLintTextFieldSize"
+        android:autofillHints="" />
+
+    <RadioGroup
+        android:id="@+id/CoopCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/CoopYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admitted to Co-op"/>
+
+        <RadioButton
+            android:id="@+id/CoopNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not Admitted to Co-op"/>
+
+    </RadioGroup>
+
+    <EditText
         android:id="@+id/CSCA08"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

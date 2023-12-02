@@ -34,9 +34,22 @@ public class InputGrades extends AppCompatActivity {
         final EditText a37mark = findViewById(R.id.MATA37);
         final EditText a22mark = findViewById(R.id.MATA22);
 
-        RadioGroup admissionCategory = findViewById(R.id.AdmissionCategory);
+        RadioGroup CoopCheck = findViewById(R.id.CoopCheck);
+        CoopCheck.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = findViewById(checkedId);
+                String selectedCategory = radioButton.getText().toString();
+                if (selectedCategory.equals("Admitted to Co-op")){
+                    databaseReference.child(utorid).child("coop").setValue(true);
+                } else if (selectedCategory.equals("Not Admitted to Co-op")) {
+                    databaseReference.child(utorid).child("coop").setValue(false);
+                }
+            }
+        });
 
-        admissionCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        RadioGroup AdmissionCategory = findViewById(R.id.AdmissionCategory);
+        AdmissionCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton = findViewById(checkedId);
@@ -51,7 +64,6 @@ public class InputGrades extends AppCompatActivity {
                 }
             }
         });
-
 
         Button buttonSubmitGrades = findViewById(R.id.Submit);
         buttonSubmitGrades.setOnClickListener(view -> {
