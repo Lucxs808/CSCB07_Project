@@ -24,7 +24,7 @@ public class RSVPActivity extends AppCompatActivity {
 
         // Set up the RSVP button click listener
         MaterialButton rsvpButton = findViewById(R.id.rsvpButton);
-        rsvpButton.setOnClickListener(v -> RSVPForEvent());
+        rsvpButton.setOnClickListener(v -> RSVPForEvent()   );
     }
 
     private void RSVPForEvent() {
