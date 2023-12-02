@@ -45,4 +45,17 @@
     <string name="event_name">Event Name</string>
     <string name="announce">Announce</string>
     <string name="admin_page">Admin Page</string>
+    <string name="type_a_subject_for_your_complaint">Type a subject for your complaint</string>
+    <string name="body_of_complaint">Body of Complaint</string>
+    <string name="view_registered_events">View Registered Events</string>
+    <string name="student_page">Student Page</string>
+    <string name="view_events">View Events</string>
+    <string name="make_announcement">Make Announcement</string>
+    <string name="back">back</string>
+    <string name="event_name1">Event Name</string>
+    <string name="date_mm_dd_yy">Date (MM/DD/YY)</string>
+    <string name="time_please_specify_am_pm">Time (Please specify AM/PM)</string>
+    <string name="location">Location</string>
+    <string name="participant_limit">Participant Limit</string>
+    <string name="submit">Submit</string>
 </resources>

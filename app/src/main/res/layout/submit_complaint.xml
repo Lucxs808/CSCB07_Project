@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubmitComplaint">
+
+
+    <EditText
+        android:id="@+id/editTextComplaint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/type_a_subject_for_your_complaint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
+
+
+    <EditText
+        android:id="@+id/editTextBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextComplaint"
+        android:layout_marginTop="16dp"
+        android:hint="@string/body_of_complaint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
+
+
+    <Button
+        android:id="@+id/submitcbtn"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextBody"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/submit" />
+
+    <Button
+        android:id="@+id/back_button5"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submitcbtn"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/back"
+        android:onClick="OnBackBtn2Click"/>
+
+</RelativeLayout>

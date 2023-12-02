@@ -9,44 +9,60 @@
         android:id="@+id/editTextEventName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Event Name"
         android:layout_marginTop="16dp"
-        android:inputType="text" />
+        android:hint="@string/event_name1"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/editTextDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date (MM/DD/YY)"
         android:layout_below="@id/editTextEventName"
         android:layout_marginTop="16dp"
-        android:inputType="text" />
+        android:hint="@string/date_mm_dd_yy"
+        android:inputType="text"
+        android:minHeight="48dp"
+        tools:ignore="TextFields,VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Time (Please specify AM/PM)"
         android:layout_below="@id/editTextDate"
         android:layout_marginTop="16dp"
-        android:inputType="text" />
+        android:hint="@string/time_please_specify_am_pm"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/editTextLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Location"
         android:layout_below="@id/editTextTime"
         android:layout_marginTop="16dp"
-        android:inputType="text" />
+        android:hint="@string/location"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
+
     <EditText
         android:id="@+id/editTextParticipantLimit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Participant Limit"
         android:layout_below="@id/editTextLocation"
         android:layout_marginTop="16dp"
-        android:inputType="number" />
+        android:hint="@string/participant_limit"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/announceEventBtn"
@@ -67,6 +83,6 @@
         android:layout_below="@id/announceEventBtn"
         android:layout_marginStart="158dp"
         android:layout_marginTop="0dp"
-        android:text="Back" />
+        android:text="@string/back" />
 
 </RelativeLayout>

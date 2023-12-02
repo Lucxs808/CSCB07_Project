@@ -1,9 +1,7 @@
 // Event.java
 package com.example.myfirstapp;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Event {
     private String name;

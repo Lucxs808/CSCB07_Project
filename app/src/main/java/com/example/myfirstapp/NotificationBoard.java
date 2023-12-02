@@ -2,11 +2,9 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -18,18 +16,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class NotificationBoard extends AppCompatActivity {
-    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/");
-    private String currentutorid;
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/");
+    private String currentUid;
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_notification_board);
 
-        currentutorid = getIntent().getStringExtra("utorid");
+        currentUid = getIntent().getStringExtra("utorID");
 
         Spinner spinner = findViewById(R.id.spinnerOption);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -52,16 +49,6 @@ public class NotificationBoard extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-
-        Button button = findViewById(R.id.back_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
     }
@@ -105,7 +92,13 @@ public class NotificationBoard extends AppCompatActivity {
     }
 
     private void displayFragment(ArrayList<?> notifications, boolean isAnnouncement){
-        NotificationList fragment = NotificationList.newInstance(notifications, isAnnouncement, currentutorid);
+        NotificationList fragment = NotificationList.newInstance(notifications, isAnnouncement, currentUid);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
+    }
+
+    public void OnBackBtn1Click(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("utorID", currentUid);
+        startActivity(intent);
     }
 }

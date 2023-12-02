@@ -1,12 +1,10 @@
 // ViewEventsActivity.java
 package com.example.myfirstapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,27 +19,25 @@ import java.util.List;
 
 public class ViewEventsActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
-    private Button backButton;
-
     private DatabaseReference eventsReference;
+    private String currentUid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_events);
 
+        currentUid = getIntent().getStringExtra("utorID");
+
         // Initialize Firebase
         eventsReference = FirebaseDatabase.getInstance().getReference("events");
 
         // Initialize RecyclerView
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        backButton = findViewById(R.id.back_button3);
 
         // Initialize eventList
         eventList = new ArrayList<>();
@@ -50,22 +46,13 @@ public class ViewEventsActivity extends AppCompatActivity {
         eventAdapter = new EventAdapter(eventList);
         recyclerView.setAdapter(eventAdapter);
 
-
         // Load events from Firebase
         loadEvents();
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AdminPage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     private void loadEvents() {
         eventsReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eventList.clear();
@@ -86,5 +73,11 @@ public class ViewEventsActivity extends AppCompatActivity {
                 // Handle error
             }
         });
+    }
+
+    public void onBackBtnClick(View view) {
+        Intent intent = new Intent(this, AdminPage.class);
+        intent.putExtra("utorID", currentUid);
+        startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,12 @@ import java.util.List;
 
 public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewHolder> {
 
-    private List<Event> eventList;
-    private String currentutorid;
+    private final List<Event> eventList;
+    private final String currentUid;
 
-    public EventAdapter1(List<Event> eventList, String currentutorid) {
+    public EventAdapter1(List<Event> eventList, String currentUid) {
         this.eventList = eventList;
-        this.currentutorid = currentutorid;
+        this.currentUid = currentUid;
     }
     private int getEventPositionById(String eventId) {
         for (int i = 0; i < eventList.size(); i++) {
@@ -39,6 +40,7 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
         return new EventViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event currentEvent = eventList.get(position);
@@ -63,19 +65,16 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
             Toast.makeText(context, "Event is full. Cannot register.", Toast.LENGTH_SHORT).show();
             return;
         }
-        eventRef.child(currentutorid).setValue(true).addOnSuccessListener(aVoid -> {
-            Toast.makeText(context, "You have successfully registered!", Toast.LENGTH_SHORT).show();
-        });
+        eventRef.child(currentUid).setValue(true).addOnSuccessListener(aVoid -> Toast.makeText(context, "You have successfully registered!", Toast.LENGTH_SHORT).show());
     }
 
     static class EventViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView eventNameTextView;
-        private TextView eventDateTextView;
-        private TextView eventTimeTextView;
-        private TextView eventLocationTextView;
-        private Button button;
-        private Button button1;
+        private final TextView eventNameTextView;
+        private final TextView eventDateTextView;
+        private final TextView eventTimeTextView;
+        private final TextView eventLocationTextView;
+        private final Button button;
 
 
         public EventViewHolder(@NonNull View itemView) {
@@ -85,7 +84,7 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
             eventTimeTextView = itemView.findViewById(R.id.eventTimeTextView1);
             eventLocationTextView = itemView.findViewById(R.id.eventLocationTextView1);
             button = itemView.findViewById(R.id.rsvp_button);
-            button1 = itemView.findViewById(R.id.comment_button);
+            Button button1 = itemView.findViewById(R.id.comment_button);
         }
     }
 }

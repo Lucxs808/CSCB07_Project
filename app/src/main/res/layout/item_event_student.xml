@@ -39,7 +39,7 @@
         android:id="@+id/rsvp_button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="80dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@+id/eventLocationTextView1"
         android:layout_marginStart="145dp"
         android:layout_marginTop="8dp"
@@ -51,7 +51,7 @@
         android:id="@+id/comment_button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@+id/rsvp_button"
 
         android:layout_marginStart="132dp"
