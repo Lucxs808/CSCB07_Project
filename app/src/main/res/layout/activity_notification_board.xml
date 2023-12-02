@@ -22,11 +22,12 @@
     <Spinner
         android:id="@+id/spinnerOption"
         android:layout_width="121dp"
-        android:layout_height="31dp"
+        android:layout_height="48dp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -40,9 +41,10 @@
         android:id="@+id/back_button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="80dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginStart="200dp"
-        android:text="back"
+        android:onClick="OnBackBtn1Click"
+        android:text="@string/back"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toEndOf="@+id/spinnerOption" />

@@ -2,7 +2,6 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.annotation.Nullable;
@@ -31,35 +30,33 @@ public class InputGrades extends AppCompatActivity {
         final EditText a22mark = findViewById(R.id.MATA22);
 
         Button buttonSubmitGrades = findViewById(R.id.Submit);
-        buttonSubmitGrades.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int a08marks = Integer.parseInt(a08mark.getText().toString());
-                int a20marks = Integer.parseInt(a20mark.getText().toString());
-                int a48marks = Integer.parseInt(a48mark.getText().toString());
-                int a67marks = Integer.parseInt(a67mark.getText().toString());
-                int a31marks = Integer.parseInt(a31mark.getText().toString());
-                int a37marks = Integer.parseInt(a37mark.getText().toString());
-                int a22marks = Integer.parseInt(a22mark.getText().toString());
-                marksList.clear();
-                marksList.add(a08marks);
-                marksList.add(a20marks);
-                marksList.add(a48marks);
-                marksList.add(a67marks);
-                marksList.add(a31marks);
-                marksList.add(a37marks);
-                marksList.add(a22marks);
-                updateFirebase();
-                Intent intent = new Intent(InputGrades.this, POStChecker.class);
-                intent.putExtra("utorid", utorid);
-                intent.putIntegerArrayListExtra("marks", marksList);
-                startActivity(intent);
-                finish();
-            }
+        buttonSubmitGrades.setOnClickListener(view -> {
+            int a08marks = Integer.parseInt(a08mark.getText().toString());
+            int a20marks = Integer.parseInt(a20mark.getText().toString());
+            int a48marks = Integer.parseInt(a48mark.getText().toString());
+            int a67marks = Integer.parseInt(a67mark.getText().toString());
+            int a31marks = Integer.parseInt(a31mark.getText().toString());
+            int a37marks = Integer.parseInt(a37mark.getText().toString());
+            int a22marks = Integer.parseInt(a22mark.getText().toString());
+            marksList.clear();
+            marksList.add(a08marks);
+            marksList.add(a20marks);
+            marksList.add(a48marks);
+            marksList.add(a67marks);
+            marksList.add(a31marks);
+            marksList.add(a37marks);
+            marksList.add(a22marks);
+            updateFirebase();
+            Intent intent = new Intent(InputGrades.this, POStChecker.class);
+            intent.putExtra("utorid", utorid);
+            intent.putIntegerArrayListExtra("marks", marksList);
+            startActivity(intent);
+            finish();
         });
     }
     private void updateFirebase() {
         utorid = getIntent().getStringExtra("utorid");
+        assert utorid != null;
         databaseReference.child(utorid).child("marksList").setValue(marksList);
         databaseReference.child(utorid).child("grades").setValue(true);
     }

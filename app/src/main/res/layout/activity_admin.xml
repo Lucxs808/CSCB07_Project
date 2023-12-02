@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".AdminPage">
 
     <TextView
@@ -13,7 +15,6 @@
         android:text="@string/admin_page"
         android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"/>
 
     <TextView
@@ -23,61 +24,54 @@
         android:text="@string/admin_welcome"
         android:textSize="18sp"
         android:textColor="@android:color/white"
-        android:layout_below="@id/user_details"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/Announcements"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/announcements"
-        android:layout_below="@id/adminWelcomeText"
         android:onClick="onViewAnnouncementClick"
         android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/Events"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/events"
-        android:layout_below="@id/Announcements"
         android:layout_marginTop="16dp"
         android:onClick="onAnnounceEventClick"/>
 
     <Button
         android:id="@+id/Complaints"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/complaints"
-        android:layout_below="@id/Events"
         android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/viewEventsBtn"
-        android:layout_width="376dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Complaints"
         android:layout_marginTop="16dp"
         android:onClick="onViewEventsClick"
-        android:text="View Events" />
+        android:text="@string/view_events" />
 
     <Button
         android:id="@+id/makeAnnouncementBtn"
-        android:layout_width="376dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/viewEventsBtn"
         android:layout_marginTop="16dp"
         android:onClick="onMakeAnnouncementClick"
-        android:text="Make Announcement" />
+        android:text="@string/make_announcement" />
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/makeAnnouncementBtn"
         android:layout_marginTop="43dp"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:onClick="OnLogoutClick"/>
 
 
-</RelativeLayout>
+</LinearLayout>

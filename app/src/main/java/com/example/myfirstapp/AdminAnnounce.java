@@ -15,9 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AdminAnnounce extends AppCompatActivity {
     private EditText DateEdit;
     private EditText ContentEdit;
-    private Button MakeAnnounce;
     private String ID;
-    private Button backButton;
 
     private DatabaseReference announcementsReference;
 
@@ -32,32 +30,19 @@ public class AdminAnnounce extends AppCompatActivity {
 
         DateEdit = findViewById(R.id.editAnnounceDate );
         ContentEdit = findViewById(R.id.editAnnounceContent);
-        MakeAnnounce = findViewById(R.id.MakeAnnounce);
-        backButton = findViewById(R.id.back_button2);
+        Button makeAnnounce = findViewById(R.id.MakeAnnounce);
 
         //Used for storing in firebase
-        ID = getIntent().getStringExtra("AdminID");
+        ID = getIntent().getStringExtra("utorID");
 
-        MakeAnnounce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                makeAnnouncement();
-                Toast.makeText(AdminAnnounce.this,"You have posted a new announcement",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AdminPage.class);
-                startActivity(intent);
-                finish();
-            }
+        makeAnnounce.setOnClickListener(v -> {
+            makeAnnouncement();
+            Toast.makeText(AdminAnnounce.this,"You have posted a new announcement",Toast.LENGTH_SHORT).show();
         });
     }
 
     private void makeAnnouncement() {
-        String adminID = ID.toString();
+        String adminID = ID;
         String date = DateEdit.getText().toString();
         String content = ContentEdit.getText().toString();
 
@@ -68,7 +53,14 @@ public class AdminAnnounce extends AppCompatActivity {
         Announcement announce = new Announcement(adminID, date, content);
 
         String announcementKey = announcementsReference.push().getKey();
+        assert announcementKey != null;
         announcementsReference.child(announcementKey).setValue(announce);
 
+    }
+
+    public void OnBackBtn4Click(View view) {
+        Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+        intent.putExtra("utorID", ID);
+        startActivity(intent);
     }
 }
