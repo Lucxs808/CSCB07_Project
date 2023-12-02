@@ -12,6 +12,18 @@ public class Event {
     private String location;
     private HashMap<String, Boolean> attendances;
     private String id;
+    private int participantLimit; // TRYING
+    public int getParticipantLimit() {///////////////////
+        return participantLimit;
+    }
+
+    public void setParticipantLimit(int participantLimit) {////////////////
+        this.participantLimit = participantLimit;
+    }
+
+    public boolean isEventFull() {////////////
+        return attendances.size() >= participantLimit;
+    }
 
     public Event() {
         // Default constructor required for Firebase

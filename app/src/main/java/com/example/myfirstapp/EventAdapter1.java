@@ -24,7 +24,14 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
         this.eventList = eventList;
         this.currentutorid = currentutorid;
     }
-
+    private int getEventPositionById(String eventId) {
+        for (int i = 0; i < eventList.size(); i++) {
+            if (eventList.get(i).getId().equals(eventId)) {
+                return i;
+            }
+        }
+        return -1;
+    }// EXTRA THING
     @NonNull
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,6 +59,10 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
         DatabaseReference eventRef = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/")
                 .getReference("events")
                 .child(eventId).child("attendances");
+        if (eventList.get(getEventPositionById(eventId)).isEventFull()) {////////
+            Toast.makeText(context, "Event is full. Cannot register.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         eventRef.child(currentutorid).setValue(true).addOnSuccessListener(aVoid -> {
             Toast.makeText(context, "You have successfully registered!", Toast.LENGTH_SHORT).show();
         });
