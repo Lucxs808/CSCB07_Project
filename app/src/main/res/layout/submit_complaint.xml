@@ -3,49 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminAnnounce">
+    tools:context=".SubmitComplaint">
+
 
     <EditText
-        android:id="@+id/editAnnounceDate"
+        android:id="@+id/editTextComplaint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/date_mm_dd_yy"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="TextFields,VisualLintTextFieldSize"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/editAnnounceContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editAnnounceDate"
-        android:layout_marginTop="16dp"
-        android:hint="@string/announcement_please_enter_the_announcement"
+        android:hint="@string/type_a_subject_for_your_complaint"
         android:inputType="text"
         android:minHeight="48dp"
         android:autofillHints=""
         tools:ignore="VisualLintTextFieldSize" />
 
-    <Button
-        android:id="@+id/MakeAnnounce"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
+
+    <EditText
+        android:id="@+id/editTextBody"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editAnnounceContent"
+        android:layout_below="@+id/editTextComplaint"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="150dp"
-        android:text="@string/post_announcement" />
+        android:hint="@string/body_of_complaint"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
+
 
     <Button
-        android:id="@+id/back_button2"
+        android:id="@+id/submitcbtn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/MakeAnnounce"
-        android:layout_marginStart="156dp"
+        android:layout_below="@+id/editTextBody"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/submit" />
+
+    <Button
+        android:id="@+id/back_button5"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submitcbtn"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="0dp"
         android:text="@string/back"
-        android:onClick="OnBackBtn4Click"/>
+        android:onClick="OnBackBtn2Click"/>
 
 </RelativeLayout>

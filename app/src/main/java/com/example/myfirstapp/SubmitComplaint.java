@@ -1,13 +1,13 @@
 package com.example.myfirstapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 
-import android.app.Activity;
 import android.widget.Toast;
 
 
@@ -22,31 +22,27 @@ public class SubmitComplaint extends AppCompatActivity {
 
     private EditText complaintSubjectEditText;
     private EditText complaintBodyEditText;
-    private Button submitComplaintButton;
     private DatabaseReference complaintsReference;
+    String currentUid;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.s_complaint);
+        setContentView(R.layout.submit_complaint);
 
 
         // Initialize Firebase
-        complaintsReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("complaints");
+        complaintsReference = FirebaseDatabase.getInstance().getReference("complaints");
+        currentUid = getIntent().getStringExtra("utorID");
 
         // Initialize UI elements
-        complaintSubjectEditText = findViewById(R.id.csubject);
-        complaintBodyEditText = findViewById(R.id.cbody);
-        submitComplaintButton = findViewById(R.id.submitcbtn);
+        complaintSubjectEditText = findViewById(R.id.editTextComplaint);
+        complaintBodyEditText = findViewById(R.id.editTextBody);
+        Button submitComplaintButton = findViewById(R.id.submitcbtn);
 
 
-        submitComplaintButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pushComplaint();
-            }
-        });
+        submitComplaintButton.setOnClickListener(v -> pushComplaint());
     }
 
 
@@ -68,14 +64,17 @@ public class SubmitComplaint extends AppCompatActivity {
 
 
         String complaintKey = complaintsReference.push().getKey();
+        assert complaintKey != null;
         complaintsReference.child(complaintKey).setValue(complaint);
 
         Toast.makeText(SubmitComplaint.this, "You have submitted a complaint", Toast.LENGTH_SHORT).show();
 
-
-
-
     }
 
+    public void OnBackBtn2Click(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("utorID", currentUid);
+        startActivity(intent);
+    }
 }
 

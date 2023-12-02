@@ -12,7 +12,7 @@ public class utoridDatabaseChecker {
     public interface UtorIDCheckListener {
         void onUtorIDCheckResult(boolean exists);
     }
-    private DatabaseReference d;
+    private final DatabaseReference d;
 
     // Initialize the database reference in contructor
     utoridDatabaseChecker(){

@@ -18,56 +18,53 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class ViewAnnouncements extends AppCompatActivity {
-    private AnnouncementAdapter announcementAdapter;
-    private List<Announcement> announcementsList;
+public class ViewRegisteredEvents extends AppCompatActivity {
+    private EventAdapter eventAdapter;
+    private List<Event> eventList;
+    private DatabaseReference eventsRef;
     private String currentUid;
 
-    private DatabaseReference announcementsReference;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_announcements1);
-
-        // Initialize Firebase
-        announcementsReference = FirebaseDatabase.getInstance().getReference("announcements");
-        currentUid = getIntent().getStringExtra("utorID");
-
-        // Initialize RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.recyclerView2);
+        setContentView(R.layout.activity_view_events);
+        eventsRef = FirebaseDatabase.getInstance().getReference("events");
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        eventList = new ArrayList<>();
+        eventAdapter = new EventAdapter(eventList);
+        recyclerView.setAdapter(eventAdapter);
+        currentUid = getIntent().getStringExtra("utorid");
 
-        // Initialize eventList
-        announcementsList = new ArrayList<>();
+        loadEvents();
 
-        // Set up the EventAdapter
-        announcementAdapter = new AnnouncementAdapter(announcementsList);
-        recyclerView.setAdapter(announcementAdapter);
-
-        // Load events from Firebase
-        loadAnnouncements();
 
     }
 
-    private void loadAnnouncements() {
-        announcementsReference.addValueEventListener(new ValueEventListener() {
+    private void loadEvents() {
+        eventsRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                announcementsList.clear();
+                eventList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     // Handle null data
                     if (snapshot.getValue() != null) {
-                        Announcement announcement = snapshot.getValue(Announcement.class);
-                        if (announcement != null) {
-                            announcementsList.add(announcement);
+                        Event event = snapshot.getValue(Event.class);
+                        if (event != null) {
+                            Map<String, Boolean> attendances = event.getAttendances();
+                            if (attendances.containsKey(currentUid)){
+                                boolean isAttend = Boolean.TRUE.equals(attendances.get(currentUid));
+                                if (isAttend){
+                                    eventList.add(event);
+                                }
+                            }
                         }
                     }
                 }
-                announcementAdapter.notifyDataSetChanged();
+                eventAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -76,8 +73,9 @@ public class ViewAnnouncements extends AppCompatActivity {
             }
         });
     }
-    public void OnBackBtn3Click(View view) {
-        Intent intent = new Intent(this, AdminPage.class);
+
+    public void onBackBtnClick(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("utorID", currentUid);
         startActivity(intent);
     }
