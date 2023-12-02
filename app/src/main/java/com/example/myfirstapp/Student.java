@@ -10,6 +10,8 @@ public class Student {
     private List<Integer> marksList; // [a08,a20,a48,a67,a31,a37,a67]
     private boolean grades; //Entered or not
 
+    private List event_list;
+
     public Student(){}
 
     public Student(String utorID,String password){
