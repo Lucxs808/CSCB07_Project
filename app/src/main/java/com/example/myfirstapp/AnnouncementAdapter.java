@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.ViewHolder> {
 
-    private List<Announcement> announcementList;
+    private final List<Announcement> announcementList;
 
     public AnnouncementAdapter(List<Announcement> announcementList) {
         this.announcementList = announcementList;
@@ -37,9 +38,9 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView AnnouncementAdminTextView;
-        private TextView AnnouncementDateTextView;
-        private TextView AnnouncementContentTextView;
+        private final TextView AnnouncementAdminTextView;
+        private final TextView AnnouncementDateTextView;
+        private final TextView AnnouncementContentTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -48,6 +49,7 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
             AnnouncementContentTextView = itemView.findViewById(R.id.Announcement_view);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(Announcement announcement) {
             AnnouncementAdminTextView.setText("Admin: " + announcement.getAdminID());
             AnnouncementDateTextView.setText("Date: " + announcement.getDate());

@@ -12,37 +12,48 @@
         android:id="@+id/user_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student Page"
+        android:text="@string/student_page"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/post"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/post" />
 
     <Button
-        android:id="@+id/submitcomplaint"
-        android:layout_width="350dp"
+        android:id="@+id/SubmitComplaintBtn"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/submit_complaint" />
+        android:text="@string/submit_complaint"
+        android:onClick="OnSubmitComClick"/>
 
     <Button
         android:id="@+id/notifications"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:onClick="onViewNotificationClick"
-        android:text="@string/notifications" />
+        android:text="@string/notifications"
+        tools:ignore="TextSizeCheck" />
+
+    <Button
+        android:id="@+id/ViewRegisteredEvent"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/view_registered_events"
+        android:onClick="onViewRegisteredClick"/>
 
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Logout" />
+        android:text="@string/logout"
+        android:onClick="OnLogoutClick"/>
 
 </LinearLayout>

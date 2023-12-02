@@ -11,7 +11,7 @@
         android:id="@+id/textProgramsAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Programs Available:"
+        android:text="@string/programs_available"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -28,15 +28,19 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="center"
-        android:text="Computer Science"
+        android:minHeight="48dp"
+        android:text="@string/computer_science"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="text"
+        tools:ignore="LabelFor,VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/Minor_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Minor in Computer Science: "
+        android:text="@string/minor_in_computer_science"
         android:layout_below="@id/Title_Comp_Sci"
         android:layout_marginTop="12dp"/>
 
@@ -44,7 +48,7 @@
         android:id="@+id/Major_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Major in Computer Science: "
+        android:text="@string/major_in_computer_science"
         android:layout_below="@id/Minor_Computer_Science"
         android:layout_marginTop="8dp"/>
 
@@ -52,7 +56,7 @@
         android:id="@+id/Major_Coop_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Major(Coop) in Computer Science: "
+        android:text="@string/major_coop_in_computer_science"
         android:layout_below="@id/Major_Computer_Science"
         android:layout_marginTop="8dp"/>
 
@@ -60,7 +64,7 @@
         android:id="@+id/Specialist_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialist in Computer Science: "
+        android:text="@string/specialist_in_computer_science"
         android:layout_below="@id/Major_Coop_Computer_Science"
         android:layout_marginTop="8dp"/>
 
@@ -68,7 +72,7 @@
         android:id="@+id/Specialist_Coop_Computer_Science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialist(Coop) in Computer Science: "
+        android:text="@string/specialist_coop_in_computer_science"
         android:layout_below="@id/Specialist_Computer_Science"
         android:layout_marginTop="8dp"/>
 
@@ -76,22 +80,26 @@
         android:id="@+id/Title_Math"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Specialist_Coop_Computer_Science"
+        android:layout_marginTop="12dp"
         android:background="#CCCCCC"
         android:enabled="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="center"
-        android:text="Mathematics"
-        android:layout_below="@id/Specialist_Coop_Computer_Science"
-        android:layout_marginTop="12dp"
+        android:minHeight="48dp"
+        android:text="@string/mathematics"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="text"
+        tools:ignore="LabelFor,VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/Major_Math"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Major in Mathematics: "
+        android:text="@string/major_in_mathematics"
         android:layout_below="@id/Title_Math"
         android:layout_marginTop="12dp"/>
 
@@ -99,7 +107,7 @@
         android:id="@+id/Major_Coop_Math"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Major(Coop) in Mathematics: "
+        android:text="@string/major_coop_in_mathematics"
         android:layout_below="@id/Major_Math"
         android:layout_marginTop="8dp"/>
 
@@ -107,7 +115,7 @@
         android:id="@+id/Specialist_Math"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialist in Mathematics: "
+        android:text="@string/specialist_in_mathematics"
         android:layout_below="@id/Major_Coop_Math"
         android:layout_marginTop="8dp"/>
 
@@ -115,7 +123,7 @@
         android:id="@+id/Specialist_Coop_Math"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialist(Coop) in Mathematics: "
+        android:text="@string/specialist_coop_in_mathematics"
         android:layout_below="@id/Specialist_Math"
         android:layout_marginTop="8dp"/>
 
@@ -123,22 +131,26 @@
         android:id="@+id/Title_Stats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Specialist_Coop_Math"
+        android:layout_marginTop="12dp"
         android:background="#CCCCCC"
         android:enabled="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:gravity="center"
-        android:text="Statistics"
-        android:layout_below="@id/Specialist_Coop_Math"
-        android:layout_marginTop="12dp"
+        android:minHeight="48dp"
+        android:text="@string/statistics"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="text"
+        tools:ignore="LabelFor,VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/Major_Stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Major in Statistics: "
+        android:text="@string/major_in_statistics"
         android:layout_below="@id/Title_Stats"
         android:layout_marginTop="12dp"/>
 
@@ -146,7 +158,7 @@
         android:id="@+id/Major_Coop_Stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Major(Coop) in Statistics: "
+        android:text="@string/major_coop_in_statistics"
         android:layout_below="@id/Major_Stats"
         android:layout_marginTop="8dp"/>
 
@@ -154,7 +166,7 @@
         android:id="@+id/Specialist_Stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialist in Statistics: "
+        android:text="@string/specialist_in_statistics"
         android:layout_below="@id/Major_Coop_Stats"
         android:layout_marginTop="8dp"/>
 
@@ -162,7 +174,7 @@
         android:id="@+id/Specialist_Coop_Stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specialist(Coop) in Statistics: "
+        android:text="@string/specialist_coop_in_statistics"
         android:layout_below="@id/Specialist_Stats"
         android:layout_marginTop="8dp"/>
 
