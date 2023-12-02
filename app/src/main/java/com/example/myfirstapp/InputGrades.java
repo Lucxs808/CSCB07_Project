@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +22,8 @@ public class InputGrades extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_grades);
+        utorid = getIntent().getStringExtra("utorid");
+        assert utorid != null;
         marksList = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference().child("users").child("students");
         final EditText a08mark = findViewById(R.id.CSCA08);
@@ -28,6 +33,25 @@ public class InputGrades extends AppCompatActivity {
         final EditText a31mark = findViewById(R.id.MATA31);
         final EditText a37mark = findViewById(R.id.MATA37);
         final EditText a22mark = findViewById(R.id.MATA22);
+
+        RadioGroup admissionCategory = findViewById(R.id.AdmissionCategory);
+
+        admissionCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = findViewById(checkedId);
+                String selectedCategory = radioButton.getText().toString();
+                if (selectedCategory.equals("Computer Science")){
+                    databaseReference.child(utorid).child("admissionCategory").setValue(0);
+                } else if (selectedCategory.equals("Mathematics")) {
+                    databaseReference.child(utorid).child("admissionCategory").setValue(1);
+                }
+                else if (selectedCategory.equals("Statistics")){
+                    databaseReference.child(utorid).child("admissionCategory").setValue(2);
+                }
+            }
+        });
+
 
         Button buttonSubmitGrades = findViewById(R.id.Submit);
         buttonSubmitGrades.setOnClickListener(view -> {
@@ -55,8 +79,6 @@ public class InputGrades extends AppCompatActivity {
         });
     }
     private void updateFirebase() {
-        utorid = getIntent().getStringExtra("utorid");
-        assert utorid != null;
         databaseReference.child(utorid).child("marksList").setValue(marksList);
         databaseReference.child(utorid).child("grades").setValue(true);
     }

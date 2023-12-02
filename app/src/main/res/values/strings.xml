@@ -85,4 +85,6 @@
     <string name="enter_mata22_numeric_grade_if_taken">Enter MATA22 Numeric Grade (if taken)</string>
     <string name="submit_grades">Submit Grades</string>
     <string name="number_of_places_left">Number of places left</string>
+    <string name="Enter_Admission_Category">Enter Admission Category</string>
+    <string name="AdmissionCategory">Choose your Admission Category</string>
 </resources>

@@ -7,6 +7,49 @@
     android:padding="16dp">
 
     <EditText
+        android:id="@+id/Title_Admission_Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#CCCCCC"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/AdmissionCategory"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:inputType="text"
+        tools:ignore="LabelFor,VisualLintTextFieldSize"
+        android:autofillHints="" />
+
+    <RadioGroup
+        android:id="@+id/AdmissionCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/CSOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Computer Science"/>
+
+        <RadioButton
+            android:id="@+id/MathOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mathematics"/>
+
+        <RadioButton
+            android:id="@+id/StatsOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statistics"/>
+    </RadioGroup>
+
+    <EditText
         android:id="@+id/CSCA08"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
