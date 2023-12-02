@@ -35,33 +35,30 @@ public class InputGrades extends AppCompatActivity {
         final EditText a22mark = findViewById(R.id.MATA22);
 
         RadioGroup CoopCheck = findViewById(R.id.CoopCheck);
-        CoopCheck.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
-                String selectedCategory = radioButton.getText().toString();
-                if (selectedCategory.equals("Admitted to Co-op")){
-                    databaseReference.child(utorid).child("coop").setValue(true);
-                } else if (selectedCategory.equals("Not Admitted to Co-op")) {
-                    databaseReference.child(utorid).child("coop").setValue(false);
-                }
+        CoopCheck.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton radioButton = findViewById(checkedId);
+            String selectedCategory = radioButton.getText().toString();
+            if (selectedCategory.equals("Admitted to Co-op")){
+                databaseReference.child(utorid).child("coop").setValue(true);
+            } else if (selectedCategory.equals("Not Admitted to Co-op")) {
+                databaseReference.child(utorid).child("coop").setValue(false);
             }
         });
 
         RadioGroup AdmissionCategory = findViewById(R.id.AdmissionCategory);
-        AdmissionCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = findViewById(checkedId);
-                String selectedCategory = radioButton.getText().toString();
-                if (selectedCategory.equals("Computer Science")){
+        AdmissionCategory.setOnCheckedChangeListener((group, checkedId) -> {
+            RadioButton radioButton = findViewById(checkedId);
+            String selectedCategory = radioButton.getText().toString();
+            switch (selectedCategory) {
+                case "Computer Science":
                     databaseReference.child(utorid).child("admissionCategory").setValue(0);
-                } else if (selectedCategory.equals("Mathematics")) {
+                    break;
+                case "Mathematics":
                     databaseReference.child(utorid).child("admissionCategory").setValue(1);
-                }
-                else if (selectedCategory.equals("Statistics")){
+                    break;
+                case "Statistics":
                     databaseReference.child(utorid).child("admissionCategory").setValue(2);
-                }
+                    break;
             }
         });
 

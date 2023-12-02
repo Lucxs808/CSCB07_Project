@@ -1,8 +1,11 @@
 package com.example.myfirstapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,27 +22,34 @@ public class POStChecker extends AppCompatActivity {
     private int admissionCategory;
     private boolean coopStatus;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_checker);
 
         String utorid = getIntent().getStringExtra("utorid");
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference().child("users").child("students").child(utorid);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                admissionCategory = dataSnapshot.child("admissionCategory").getValue(Integer.class);
-                coopStatus = dataSnapshot.child("coop").getValue(Boolean.class);
-            }
+        if (utorid != null && !utorid.isEmpty()){
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference().child("users").child("students").child(utorid);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    DataSnapshot admissionCategorySnapshot = dataSnapshot.child("admissionCategory");
+                    if (admissionCategorySnapshot.exists()) {
+                        admissionCategory = admissionCategorySnapshot.getValue(Integer.class);
+                    }
+                    DataSnapshot coopSnapshot = dataSnapshot.child("coop");
+                    if (coopSnapshot.exists()) {
+                        coopStatus = coopSnapshot.getValue(Boolean.class);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e("Firebase", "Failed to read value.", error.toException());
+                }
+            });
+        }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Log.e("Firebase", "Failed to read value.", error.toException());
-            }
-        });
-
-        TextView textProgramsAvailable = findViewById(R.id.textProgramsAvailable);
         TextView Minor_Computer_Science = findViewById(R.id.Minor_Computer_Science);
         TextView Major_Computer_Science = findViewById(R.id.Major_Computer_Science);
         TextView Major_Coop_Computer_Science = findViewById(R.id.Major_Coop_Computer_Science);
@@ -64,9 +74,9 @@ public class POStChecker extends AppCompatActivity {
         String isEligibleForMajorMath = checkEligibilityForMajorMath(marks, admissionCategory);
         String isEligibleForMajorCoopMath = checkEligibilityForMajorCoopMath(marks, admissionCategory, coopStatus);
         String isEligibleForSpecialistMath = checkEligibilityForSpecialistMath(marks, admissionCategory);
-        String isEligibleForSpecialistCoopMath = checkEligibilityForSpecialistCoopMath(marks,admissionCategory, coopStatus);
+        String isEligibleForSpecialistCoopMath = checkEligibilityForSpecialistCoopMath(marks,admissionCategory);
         String isEligibleForMajorStats = checkEligibilityForMajorStats(marks, admissionCategory);
-        String isEligibleForMajorCoopStats = checkEligibilityForMajorCoopStats(marks, admissionCategory, coopStatus);
+        String isEligibleForMajorCoopStats = checkEligibilityForMajorCoopStats(marks, admissionCategory);
         String isEligibleForSpecialistStats = checkEligibilityForSpecialistStats(marks, admissionCategory);
         String isEligibleForSpecialistCoopStats = checkEligibilityForSpecialistCoopStats(marks, admissionCategory, coopStatus);
 
@@ -244,7 +254,7 @@ public class POStChecker extends AppCompatActivity {
         }
         return "Not Eligible";
     }
-    private String checkEligibilityForSpecialistCoopMath(ArrayList<Integer> marks, int admissionCategory, boolean coopStatus) {
+    private String checkEligibilityForSpecialistCoopMath(ArrayList<Integer> marks, int admissionCategory) {
         ArrayList<Double> gpaList = GPAConverter(marks);
         if (gpaList.get(0) > 0.0  && gpaList.get(3) > 0.0 && gpaList.get(4) > 0.0 && gpaList.get(5) > 0.0 && gpaList.get(6) > 0.0){
             if (((gpaList.get(3) + gpaList.get(4) + gpaList.get(5) + gpaList.get(6))/4) >= 2.0){
@@ -274,7 +284,7 @@ public class POStChecker extends AppCompatActivity {
         }
         return "Not Eligible";
     }
-    private String checkEligibilityForMajorCoopStats(ArrayList<Integer> marks, int admissionCategory, boolean coopStatus) {
+    private String checkEligibilityForMajorCoopStats(ArrayList<Integer> marks, int admissionCategory) {
         ArrayList<Double> gpaList = GPAConverter(marks);
         if (((gpaList.get(0) > 0.0) || (gpaList.get(1) > 0.0)) && gpaList.get(3) > 0.0 && gpaList.get(4) > 0.0 && gpaList.get(5) > 0.0 && gpaList.get(6) > 0.0){
             if (((gpaList.get(0) + gpaList.get(1) + gpaList.get(3) + gpaList.get(4) + gpaList.get(5) + gpaList.get(6))/5) >= 2.5){

@@ -17,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import android.widget.Button;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
