@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +39,7 @@ public class InputGrades extends AppCompatActivity {
         CoopCheck.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
             String selectedCategory = radioButton.getText().toString();
-            if (selectedCategory.equals("Admitted to Co-op")){
+            if (selectedCategory.equals("Admitted to Co-op")) {
                 databaseReference.child(utorid).child("coop").setValue(true);
             } else if (selectedCategory.equals("Not Admitted to Co-op")) {
                 databaseReference.child(utorid).child("coop").setValue(false);
@@ -64,13 +65,13 @@ public class InputGrades extends AppCompatActivity {
 
         Button buttonSubmitGrades = findViewById(R.id.Submit);
         buttonSubmitGrades.setOnClickListener(view -> {
-            int a08marks = Integer.parseInt(a08mark.getText().toString());
-            int a20marks = Integer.parseInt(a20mark.getText().toString());
-            int a48marks = Integer.parseInt(a48mark.getText().toString());
-            int a67marks = Integer.parseInt(a67mark.getText().toString());
-            int a31marks = Integer.parseInt(a31mark.getText().toString());
-            int a37marks = Integer.parseInt(a37mark.getText().toString());
-            int a22marks = Integer.parseInt(a22mark.getText().toString());
+            int a08marks = parseAndGetInt(a08mark);
+            int a20marks = parseAndGetInt(a20mark);
+            int a48marks = parseAndGetInt(a48mark);
+            int a67marks = parseAndGetInt(a67mark);
+            int a31marks = parseAndGetInt(a31mark);
+            int a37marks = parseAndGetInt(a37mark);
+            int a22marks = parseAndGetInt(a22mark);
             marksList.clear();
             marksList.add(a08marks);
             marksList.add(a20marks);
@@ -87,8 +88,25 @@ public class InputGrades extends AppCompatActivity {
             finish();
         });
     }
+
     private void updateFirebase() {
         databaseReference.child(utorid).child("marksList").setValue(marksList);
         databaseReference.child(utorid).child("grades").setValue(true);
+    }
+
+    private int parseAndGetInt(TextView textView) {
+        if (textView != null) {
+            String text = textView.getText().toString().trim(); // Remove leading/trailing whitespaces
+
+            if (!text.isEmpty()) {
+                try {
+                    return Integer.parseInt(text);
+                } catch (NumberFormatException e) {
+                    // Handle the case where the text is not a valid integer
+                    e.printStackTrace(); // Or log the error
+                }
+            }
+        }
+        return 0;
     }
 }
