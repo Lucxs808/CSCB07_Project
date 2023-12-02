@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class StudentReg {
 
-    private DatabaseReference database;
+    private final DatabaseReference database;
 
     public StudentReg(DatabaseReference d) {
         this.database = d;
