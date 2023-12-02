@@ -35,12 +35,20 @@
         android:layout_marginTop="8dp"
         android:text="@string/event_location" />
 
+    <TextView
+        android:id="@+id/eventPlaceLeftTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventLocationTextView1"
+        android:layout_marginTop="8dp"
+        android:text="@string/number_of_places_left" />
+
     <Button
         android:id="@+id/rsvp_button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="80dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/eventLocationTextView1"
+        android:layout_below="@+id/eventPlaceLeftTextView1"
         android:layout_marginStart="145dp"
         android:layout_marginTop="8dp"
         android:text="@string/rsvp"
