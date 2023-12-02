@@ -39,13 +39,21 @@
         android:layout_below="@id/editTextTime"
         android:layout_marginTop="16dp"
         android:inputType="text" />
+    <EditText
+        android:id="@+id/editTextParticipantLimit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Participant Limit"
+        android:layout_below="@id/editTextLocation"
+        android:layout_marginTop="16dp"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/announceEventBtn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextLocation"
+        android:layout_below="@id/editTextParticipantLimit"
         android:layout_marginTop="16dp"
         android:layout_marginStart="140dp"
         android:onClick="onAnnounceEventClick"
@@ -60,4 +68,5 @@
         android:layout_marginStart="158dp"
         android:layout_marginTop="0dp"
         android:text="Back" />
+
 </RelativeLayout>
