@@ -93,12 +93,17 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
                     eventAttendRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            long currentAttendCount = snapshot.getChildrenCount();
-                            if (currentAttendCount >= participantLimit){
-                                Toast.makeText(context, "Event is full. Cannot register.", Toast.LENGTH_SHORT).show();
+                            if (snapshot.hasChild(currentUid)) {
+                                // User is already registered, i just chnged some things kevin did lol, bleh
+                                Toast.makeText(context, "You are already registered for this event.", Toast.LENGTH_SHORT).show();
                             } else {
-                                eventAttendRef.child(currentUid).setValue(true).addOnSuccessListener(aVoid ->
-                                        Toast.makeText(context, "You have successfully registered!", Toast.LENGTH_SHORT).show());
+                                long currentAttendCount = snapshot.getChildrenCount();
+                                if (currentAttendCount >= participantLimit) {
+                                    Toast.makeText(context, "Event is full. Cannot register.", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    eventAttendRef.child(currentUid).setValue(true).addOnSuccessListener(aVoid ->
+                                            Toast.makeText(context, "You have successfully registered!", Toast.LENGTH_SHORT).show());
+                                }
                             }
                         }
 
