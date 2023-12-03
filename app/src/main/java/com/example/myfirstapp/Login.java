@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-// The Login Class is the Model (represents the logic of the login app)
+// The Login Class is the Model (represents the logic of the login app) t
 public class Login extends AppCompatActivity implements LoginView{
     // Declaring Variables
     private TextInputEditText editTextUtorID;
