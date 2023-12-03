@@ -85,7 +85,7 @@ public class InputGrades extends AppCompatActivity {
             Intent intent = new Intent(InputGrades.this, POStChecker.class);
             intent.putExtra("utorid", utorid);
             Log.d("InputGrades", "Marks List Size: " + (marksList != null ? marksList.size() : "null"));
-            intent.putIntegerArrayListExtra("marks", marksList);
+            intent.putIntegerArrayListExtra("marksList", marksList); // THIS BROKE EVERYTHING JUST BC IT DIDNT MATCH *Fixed By Lucus
             startActivity(intent);
             finish();
         });
