@@ -15,5 +15,7 @@ public class StudentReg {
         studentRef.child("password").setValue(s.getPassword());
         studentRef.child("grades").setValue(s.hasGrades());
         studentRef.child("marksList").setValue(s.getMarks());
+        studentRef.child("admissionCategory").setValue(s.getAdmissionCategory());
+        studentRef.child("coop").setValue(s.getCoop());
     }
 }
