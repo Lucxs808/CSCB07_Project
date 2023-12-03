@@ -94,7 +94,7 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(currentUid)) {
-                                // User is already registered, i just chnged some things kevin did
+                                // User is already registered, i just chnged some things kevin did lol
                                 Toast.makeText(context, "You are already registered for this event.", Toast.LENGTH_SHORT).show();
                             } else {
                                 long currentAttendCount = snapshot.getChildrenCount();
