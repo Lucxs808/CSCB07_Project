@@ -5,32 +5,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class NotificationList extends Fragment{
     private ArrayList<?> notifications;
     private RecyclerView.Adapter<?> adapter;
     private boolean isAnnouncement;
-    private String currentutorid;
+    private String currentUid;
 
     @Override
     public void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         if (getArguments() != null){
-            currentutorid = getArguments().getString("utorid");
+            currentUid = getArguments().getString("utorID");
         }
     }
 
-    public static NotificationList newInstance(ArrayList<?> notifications, boolean isAnnouncement, String currentutorid) {
+    public static NotificationList newInstance(ArrayList<?> notifications, boolean isAnnouncement, String currentUid) {
         NotificationList fragment = new NotificationList();
         Bundle args = new Bundle();
-        args.putString("utorid", currentutorid);
+        args.putString("utorID", currentUid);
         fragment.setArguments(args);
         if (isAnnouncement){
             ArrayList<Announcement> announcementsList = (ArrayList<Announcement>) notifications;
@@ -41,7 +41,7 @@ public class NotificationList extends Fragment{
             ArrayList<Event> eventsList = (ArrayList<Event>) notifications;
             fragment.notifications = eventsList;
             fragment.isAnnouncement = false;
-            fragment.adapter = new EventAdapter1(eventsList, currentutorid);
+            fragment.adapter = new EventAdapter1(eventsList, currentUid);
         }
         return fragment;
     }
@@ -53,7 +53,7 @@ public class NotificationList extends Fragment{
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView1);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

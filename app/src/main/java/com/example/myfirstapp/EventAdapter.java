@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
 
-    private List<Event> eventList;
+    private final List<Event> eventList;
 
     public EventAdapter(List<Event> eventList) {
         this.eventList = eventList;
@@ -38,10 +39,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     static class EventViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView eventNameTextView;
-        private TextView eventDateTextView;
-        private TextView eventTimeTextView;
-        private TextView eventLocationTextView;
+        private final TextView eventNameTextView;
+        private final TextView eventDateTextView;
+        private final TextView eventTimeTextView;
+        private final TextView eventLocationTextView;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,6 +52,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             eventLocationTextView = itemView.findViewById(R.id.eventLocationTextView);
         }
 
+        @SuppressLint("SetTextI18n")
         public void bind(Event event) {
             eventNameTextView.setText("Name: " + event.getName());
             eventDateTextView.setText("Date: " + event.getDate());

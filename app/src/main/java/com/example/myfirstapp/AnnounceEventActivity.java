@@ -19,8 +19,8 @@ public class AnnounceEventActivity extends AppCompatActivity {
     private EditText timeEditText;
     private EditText locationEditText;
     private EditText participantLimitEditText; // New field for participant limit
-    private Button announceEventButton;
-    private Button backButton;
+    private String currentUid;
+
 
     private DatabaseReference eventsReference;
 
@@ -38,26 +38,15 @@ public class AnnounceEventActivity extends AppCompatActivity {
         timeEditText = findViewById(R.id.editTextTime);
         locationEditText = findViewById(R.id.editTextLocation);
         participantLimitEditText = findViewById(R.id.editTextParticipantLimit); // New field initialization
-        announceEventButton = findViewById(R.id.announceEventBtn);
-        backButton = findViewById(R.id.back_button1);
+        Button announceEventButton = findViewById(R.id.announceEventBtn);
+        currentUid = getIntent().getStringExtra("utorID");
 
         // Set up click listener for the announce event button
-        announceEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                announceEvent();
-                Toast.makeText(AnnounceEventActivity.this, "You have scheduled a new Event", Toast.LENGTH_SHORT).show();
-            }
+        announceEventButton.setOnClickListener(v -> {
+            announceEvent();
+            Toast.makeText(AnnounceEventActivity.this, "You have scheduled a new Event", Toast.LENGTH_SHORT).show();
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AdminPage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     private void announceEvent() {
@@ -84,6 +73,13 @@ public class AnnounceEventActivity extends AppCompatActivity {
 
         // Push the event to Firebase
         String eventKey = eventsReference.push().getKey();
+        assert eventKey != null;
         eventsReference.child(eventKey).setValue(event);
+    }
+
+    public void OnBackBtn5Click(View view) {
+        Intent intent = new Intent(getApplicationContext(), AdminPage.class);
+        intent.putExtra("utorID", currentUid);
+        startActivity(intent);
     }
 }
