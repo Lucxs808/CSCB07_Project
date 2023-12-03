@@ -63,6 +63,9 @@
             android:name=".SubmitComplaint"
             android:label="Submit Complaint" />
         <activity
+            android:name=".ViewComplaints"
+            android:label="View Complaints" />
+        <activity
             android:name=".ViewRegisteredEvents"
             android:label="View Registered Events" />
 
