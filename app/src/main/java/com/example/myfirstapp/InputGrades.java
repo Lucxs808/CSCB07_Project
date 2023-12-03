@@ -2,6 +2,7 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -83,6 +84,7 @@ public class InputGrades extends AppCompatActivity {
             updateFirebase();
             Intent intent = new Intent(InputGrades.this, POStChecker.class);
             intent.putExtra("utorid", utorid);
+            Log.d("InputGrades", "Marks List Size: " + (marksList != null ? marksList.size() : "null"));
             intent.putIntegerArrayListExtra("marks", marksList);
             startActivity(intent);
             finish();
