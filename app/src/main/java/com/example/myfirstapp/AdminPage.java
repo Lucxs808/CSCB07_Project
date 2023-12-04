@@ -57,6 +57,13 @@ public class AdminPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void onViewComplaintsClick(View view) {
+        Intent intent = new Intent(this, ViewComplaints.class);
+        intent.putExtra("utorID", utorid);
+        startActivity(intent);
+    }
+
     public void OnLogoutClick(View view) {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);

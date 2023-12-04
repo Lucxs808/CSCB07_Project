@@ -6,7 +6,8 @@
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".AdminPage">
+    tools:context=".AdminPage"
+    tools:ignore="ExtraText">
 
     <TextView
         android:id="@+id/user_details"
@@ -46,6 +47,7 @@
         android:id="@+id/Complaints"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:onClick="onViewComplaintsClick"
         android:text="@string/complaints"
         android:layout_marginTop="16dp"/>
 
