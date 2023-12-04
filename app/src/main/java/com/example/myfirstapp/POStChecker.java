@@ -27,6 +27,8 @@ public class POStChecker extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_checker);
+        ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marksList");
+        Log.d("InputGrades1", "Marks List Size: " + (marks != null ? marks.size() : "null"));
 
         String utorid = getIntent().getStringExtra("utorid");
         if (utorid != null && !utorid.isEmpty()){
@@ -64,7 +66,6 @@ public class POStChecker extends AppCompatActivity {
         TextView Specialist_Stats = findViewById(R.id.Specialist_Stats);
         TextView Specialist_Coop_Stats = findViewById(R.id.Specialist_Coop_Stats);
 
-        ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marksList");
 
         String isEligibleForMinorCS = checkEligibilityForMinorCS(marks);
         String isEligibleForMajorCS = checkEligibilityForMajorCS(marks, admissionCategory);
@@ -360,6 +361,7 @@ public class POStChecker extends AppCompatActivity {
         return "Not Eligible";
     }
     private static ArrayList<Double> GPAConverter(ArrayList<Integer> marks) {
+        Log.d("Debug", "Marks size: " + (marks != null ? marks.size() : "null"));
         ArrayList<Double> gpa = new ArrayList<>(Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
         for (int i = 0; i < marks.size(); i++) {
             int mark = marks.get(i);
