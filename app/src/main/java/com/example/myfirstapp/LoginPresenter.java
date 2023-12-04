@@ -17,13 +17,15 @@ import com.google.firebase.database.ValueEventListener;
 //t
 public class LoginPresenter{
     private final LoginView view;
-    private final DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
     public LoginPresenter(LoginView view) {
         this.view = view;
         this.databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("users");
     }
-
+    void setDatabaseReference(DatabaseReference databaseReference) {
+        this.databaseReference = databaseReference;
+    }
     public void onLoginButtonClicked(String utorid, String password) {
         if (TextUtils.isEmpty(utorid) || TextUtils.isEmpty(password)) {
             view.showToast("Both UTORid and password are required");
