@@ -1,5 +1,5 @@
 package com.example.myfirstapp;
-
+// Arick's comment on the new code
 import com.example.myfirstapp.Comment;
 import android.content.Intent;
 import android.os.Bundle;
