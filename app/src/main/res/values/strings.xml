@@ -88,4 +88,9 @@
     <string name="Enter_Admission_Category">Enter Admission Category</string>
     <string name="AdmissionCategory">Choose your Admission Category</string>
     <string name="Coop_Status">Co-op Status\n</string>
+    <string name="Give_feedback">Give Feedback</string>
+    <string name="Give_student_comment">Give Feedback</string>
+    <string name="Please_type_your_comment_here">student_comments</string>
+    <string name="Please_type_your_rating_here">student_rating</string>
+    <string name="Student_rating">Student_rating_from10\n</string>
 </resources>

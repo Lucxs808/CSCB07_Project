@@ -48,6 +48,15 @@
         android:text="@string/view_registered_events"
         android:onClick="onViewRegisteredClick"/>
 
+
+    <Button
+        android:id="@+id/Event_feedback"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/Give_feedback"
+        android:onClick="onViewRegisteredClick"/>
+
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
@@ -55,5 +64,6 @@
         android:layout_marginTop="16dp"
         android:text="@string/logout"
         android:onClick="OnLogoutClick"/>
+
 
 </LinearLayout>
