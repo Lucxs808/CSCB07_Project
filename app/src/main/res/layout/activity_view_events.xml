@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
         android:layout_marginTop="10dp"
-        android:text="back"
+        android:text="@string/back"
         android:onClick="onBackBtnClick"/>
 
 </RelativeLayout>

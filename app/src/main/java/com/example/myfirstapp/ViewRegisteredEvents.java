@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ViewRegisteredEvents extends AppCompatActivity {
-    private EventAdapter eventAdapter;
+    private EventAdapter2 eventAdapter;
     private List<Event> eventList;
     private DatabaseReference eventsRef;
     private String currentUid;
@@ -34,7 +35,7 @@ public class ViewRegisteredEvents extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList);
+        eventAdapter = new EventAdapter2(eventList);
         recyclerView.setAdapter(eventAdapter);
         currentUid = getIntent().getStringExtra("utorid");
 
@@ -69,12 +70,11 @@ public class ViewRegisteredEvents extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
             }
         });
     }
 
-    public void onBackBtnClick(View view) {
+    public void onBackBtnClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("utorID", currentUid);
         startActivity(intent);

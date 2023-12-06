@@ -141,7 +141,6 @@ public class EventAdapter1 extends RecyclerView.Adapter<EventAdapter1.EventViewH
             eventLocationTextView = itemView.findViewById(R.id.eventLocationTextView1);
             eventPlaceTextView = itemView.findViewById(R.id.eventPlaceLeftTextView1);
             button = itemView.findViewById(R.id.rsvp_button);
-            Button button1 = itemView.findViewById(R.id.comment_button);
         }
     }
 }

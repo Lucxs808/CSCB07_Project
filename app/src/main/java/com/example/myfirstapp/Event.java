@@ -10,7 +10,9 @@ public class Event {
     private String location;
     private HashMap<String, Boolean> attendances;
     private String id;
+    private String comment;
     private int participantLimit;
+    private int numericRating;
 
     public int getParticipantLimit() {
         return participantLimit;
@@ -18,6 +20,22 @@ public class Event {
 
     public void setParticipantLimit(int participantLimit) {
         this.participantLimit = participantLimit;
+    }
+
+    public String getComment(){
+        return comment;
+    }
+
+    public void setComment(String comment){
+        this.comment = comment;
+    }
+
+    public int getNumericRating(){
+        return numericRating;
+    }
+
+    public void setNumericRating(int numericRating){
+        this.numericRating = numericRating;
     }
     
 

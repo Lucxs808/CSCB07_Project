@@ -3,54 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubmitComplaint">
-
+    tools:context=".SubmitComment">
 
     <EditText
-        android:id="@+id/editTextComplaint"
+        android:id="@+id/editTextCommentBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/type_a_subject_for_your_complaint"
+        android:hint="@string/comment"
         android:inputType="text"
         android:minHeight="48dp"
         android:autofillHints=""
         tools:ignore="VisualLintTextFieldSize" />
 
-
     <EditText
-        android:id="@+id/editTextBody"
+        android:id="@+id/editTextNumericRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextComplaint"
+        android:layout_below="@id/editTextCommentBody"
         android:layout_marginTop="16dp"
-        android:hint="@string/body_of_complaint"
+        android:hint="@string/enter_the_numeric_rating_1_10"
         android:inputType="text"
         android:minHeight="48dp"
-        android:autofillHints=""
-        tools:ignore="VisualLintTextFieldSize" />
-
+        tools:ignore="TextFields,VisualLintTextFieldSize"
+        android:autofillHints="" />
 
     <Button
-        android:id="@+id/submitcbtn"
+        android:id="@+id/commentBtn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextBody"
+        android:layout_below="@+id/editTextNumericRate"
         android:layout_marginStart="150dp"
         android:layout_marginTop="16dp"
-        android:text="@string/submit" />
+        android:text="@string/comment" />
 
     <Button
         android:id="@+id/back_button5"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/submitcbtn"
-        android:layout_marginStart="156dp"
+        android:layout_below="@id/commentBtn"
+        android:layout_marginStart="166dp"
         android:layout_marginTop="0dp"
         android:text="@string/back"
-        android:onClick="OnBackBtn2Click"/>
+        android:onClick="OnBackBtn6Click"/>
+
 
 </RelativeLayout>
-
