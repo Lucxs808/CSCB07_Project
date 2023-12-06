@@ -38,9 +38,10 @@ public class Login extends AppCompatActivity implements LoginView{
         loginbtn = findViewById(R.id.login_btn);
         textview = findViewById(R.id.registerNow);
 
-        // Initilizing the current Presenter
+        // Initializing the current Presenter
         // By MVP The presenter receives input and updates the view accordingly and then processes it through this main login class.
-        presenter = new LoginPresenter(this);
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("users");
+        presenter = new LoginPresenter(this, ref);
 
         //This listener redirects to the Register Page (The actual code is implemented in the presenter)
         textview.setOnClickListener(new View.OnClickListener() {

@@ -19,11 +19,9 @@ public class LoginPresenter{
     private final LoginView view;
     private DatabaseReference databaseReference;
 
-    public LoginPresenter(LoginView view) {
+    public LoginPresenter(LoginView view, DatabaseReference databaseReference) {
         this.view = view;
-        this.databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("users");
-    }
-    void setDatabaseReference(DatabaseReference databaseReference) {
+        //this.databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference("users");
         this.databaseReference = databaseReference;
     }
     public void onLoginButtonClicked(String utorid, String password) {
