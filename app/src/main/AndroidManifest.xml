@@ -65,6 +65,9 @@
         <activity
             android:name=".ViewRegisteredEvents"
             android:label="View Registered Events" />
+        <activity
+            android:name=".SubmitComment"
+            android:label="Submit Comment" />
 
     </application>
 

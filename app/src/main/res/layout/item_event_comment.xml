@@ -5,54 +5,47 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/eventNameTextView1"
+        android:id="@+id/eventNameTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/event_name"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/eventDateTextView1"
+        android:id="@+id/eventDateTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/eventNameTextView1"
+        android:layout_below="@id/eventNameTextView2"
         android:layout_marginTop="8dp"
         android:text="@string/event_date" />
 
     <TextView
-        android:id="@+id/eventTimeTextView1"
+        android:id="@+id/eventTimeTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/eventDateTextView1"
+        android:layout_below="@id/eventDateTextView2"
         android:layout_marginTop="8dp"
         android:text="@string/event_time" />
 
     <TextView
-        android:id="@+id/eventLocationTextView1"
+        android:id="@+id/eventLocationTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/eventTimeTextView1"
+        android:layout_below="@id/eventTimeTextView2"
         android:layout_marginTop="8dp"
         android:text="@string/event_location" />
 
-    <TextView
-        android:id="@+id/eventPlaceLeftTextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/eventLocationTextView1"
-        android:layout_marginTop="8dp"
-        android:text="@string/number_of_places_left" />
-
     <Button
-        android:id="@+id/rsvp_button"
+        android:id="@+id/comment_button"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="80dp"
+        android:layout_width="110dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/eventPlaceLeftTextView1"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/rsvp"
+        android:layout_below="@+id/eventLocationTextView2"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/comment"
         android:textSize="12sp"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:onClick="OnCommentClick"/>
 
 </RelativeLayout>
