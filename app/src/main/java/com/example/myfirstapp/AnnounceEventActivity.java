@@ -2,6 +2,7 @@ package com.example.myfirstapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,6 +75,7 @@ public class AnnounceEventActivity extends AppCompatActivity {
         // Push the event to Firebase
         String eventKey = eventsReference.push().getKey();
         assert eventKey != null;
+        event.setId(eventKey);
         eventsReference.child(eventKey).setValue(event);
     }
 

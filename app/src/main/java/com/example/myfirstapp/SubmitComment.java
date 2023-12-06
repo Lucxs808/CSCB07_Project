@@ -15,8 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SubmitComment extends AppCompatActivity {
     private EditText editTextComment;
     private EditText editTextRating;
-    private String currentUid;
+    private String utorID;
     private DatabaseReference eventsReference;
+    private String currentEventID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +26,15 @@ public class SubmitComment extends AppCompatActivity {
 
         editTextComment = findViewById(R.id.editTextCommentBody);
         editTextRating = findViewById(R.id.editTextNumericRate);
-        currentUid = getIntent().getStringExtra("utorID");
-        //String currentEventID = getIntent().getStringExtra("eventID");
-
-        //Original version is: eventsReference = FirebaseDatabase.getInstance().getReference("events").child(currentEventID);
-        eventsReference = FirebaseDatabase.getInstance().getReference("events");
+        utorID = getIntent().getStringExtra("utorID");
+        currentEventID = getIntent().getStringExtra("eventID");
+        //eventsReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference().child("events").child(currentEventID);
+        eventsReference = FirebaseDatabase.getInstance().getReference("events").child(currentEventID);
         Button button = findViewById(R.id.commentBtn);
 
         button.setOnClickListener(v -> {
             SubmitComm();
-            Toast.makeText(SubmitComment.this, "You have scheduled a new Event", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SubmitComment.this, "You have commented!", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -51,13 +51,15 @@ public class SubmitComment extends AppCompatActivity {
 
         int numericRating = Integer.parseInt(numRating);
 
-        eventsReference.child("comments").child(currentUid).setValue(commentBody);
-        eventsReference.child("ratings").child(currentUid).setValue(numericRating);
+        //eventsReference.child("comments").child(currentUid).setValue(commentBody);
+        //eventsReference.child("ratings").child(currentUid).setValue(numericRating);
+        eventsReference.child("comments").child(utorID).setValue(commentBody);
+        eventsReference.child("ratings").child(utorID).setValue(numericRating);
     }
 
     public void OnBackBtn6Click(View view){
-        Intent intent = new Intent(this, ViewRegisteredEvents.class);
-        intent.putExtra("utorID", currentUid);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("utorID", utorID);
         startActivity(intent);
     }
 }

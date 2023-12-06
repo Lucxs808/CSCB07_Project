@@ -2,6 +2,7 @@ package com.example.myfirstapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import java.util.List;
 
 public class EventAdapter2 extends RecyclerView.Adapter<EventAdapter2.EventViewHolder> {
     private final List<Event> eventsList;
-    public EventAdapter2(List<Event> eventsList){
+    private final String utorID;
+    public EventAdapter2(List<Event> eventsList, String utorID){
         this.eventsList = eventsList;
+        this.utorID = utorID;
     }
 
     @NonNull
@@ -32,14 +35,15 @@ public class EventAdapter2 extends RecyclerView.Adapter<EventAdapter2.EventViewH
         holder.eventDateTextView.setText("Date: " + currentEvent.getDate());
         holder.eventTimeTextView.setText("Time: " + currentEvent.getTime());
         holder.eventLocationTextView.setText("Place: " + currentEvent.getLocation());
-
+        String ID = currentEvent.getId();
         //Start the SubmitComment activity
         holder.button.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), SubmitComment.class);
 
             //Try to pass the eventID to SubmitComment activity
-            //intent.putExtra("eventID", currentEvent.getId());
-            v.getContext().startActivities(new Intent[]{intent});
+            intent.putExtra("eventID", ID);
+            intent.putExtra("utorID", utorID);
+            v.getContext().startActivity(intent);
         });
     }
 

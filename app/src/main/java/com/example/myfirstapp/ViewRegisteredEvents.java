@@ -31,14 +31,13 @@ public class ViewRegisteredEvents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_events);
         eventsRef = FirebaseDatabase.getInstance().getReference("events");
+        currentUid = getIntent().getStringExtra("utorid");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter2(eventList);
+        eventAdapter = new EventAdapter2(eventList, currentUid);
         recyclerView.setAdapter(eventAdapter);
-        currentUid = getIntent().getStringExtra("utorid");
-
         loadEvents();
 
 
