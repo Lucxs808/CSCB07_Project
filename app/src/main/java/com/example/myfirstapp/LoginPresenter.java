@@ -25,11 +25,10 @@ public class LoginPresenter{
         this.databaseReference = databaseReference;
     }
     public void onLoginButtonClicked(String utorid, String password) {
-        if (TextUtils.isEmpty(utorid) || TextUtils.isEmpty(password)) {
+        if (isNullOrEmpty(utorid) || isNullOrEmpty(password)) {
             view.showToast("Both UTORid and password are required");
             return;
         }
-
         // Query database for the provided UTORid
         databaseReference.child("students").child(utorid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -83,5 +82,8 @@ public class LoginPresenter{
     // This is for the Register Now button (Takes you to register page)
     public void onRegisterNowClicked() {
         view.navigateToRegisterPage();
+    }
+    private boolean isNullOrEmpty(String str) {
+        return str == null || str.trim().isEmpty();
     }
 }
