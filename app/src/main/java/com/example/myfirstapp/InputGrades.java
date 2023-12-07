@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -107,14 +108,12 @@ public class InputGrades extends AppCompatActivity {
 
     private int parseAndGetInt(TextView textView) {
         if (textView != null) {
-            String text = textView.getText().toString().trim(); // Remove leading/trailing whitespaces
-
+            String text = textView.getText().toString().trim();
             if (!text.isEmpty()) {
                 try {
                     return Integer.parseInt(text);
                 } catch (NumberFormatException e) {
-                    // Handle the case where the text is not a valid integer
-                    e.printStackTrace(); // Or log the error
+                    e.printStackTrace();
                 }
             }
         }

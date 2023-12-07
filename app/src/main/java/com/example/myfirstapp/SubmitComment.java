@@ -47,6 +47,11 @@ public class SubmitComment extends AppCompatActivity {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (0 >= Integer.parseInt(numRating) || Integer.parseInt(numRating) >= 10) {
+            // Display an error message or handle invalid input
+            Toast.makeText(this, "Rating has to be an integer between 0 and 10", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         int numericRating = Integer.parseInt(numRating);
 
