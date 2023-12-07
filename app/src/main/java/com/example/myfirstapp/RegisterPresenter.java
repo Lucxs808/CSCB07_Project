@@ -1,10 +1,7 @@
 package com.example.myfirstapp;
 
-import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.Toast;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

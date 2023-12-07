@@ -5,9 +5,6 @@ public class Announcement {
     private String date;
     private String Content;
 
-    public Announcement(){
-    }
-
     public Announcement(String AdminID, String date, String Content){
         this.AdminID = AdminID;
         this.date = date;
