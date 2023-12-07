@@ -17,7 +17,6 @@ public class SubmitComment extends AppCompatActivity {
     private EditText editTextRating;
     private String utorID;
     private DatabaseReference eventsReference;
-    private String currentEventID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class SubmitComment extends AppCompatActivity {
         editTextComment = findViewById(R.id.editTextCommentBody);
         editTextRating = findViewById(R.id.editTextNumericRate);
         utorID = getIntent().getStringExtra("utorID");
-        currentEventID = getIntent().getStringExtra("eventID");
+        String currentEventID = getIntent().getStringExtra("eventID");
         //eventsReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference().child("events").child(currentEventID);
         eventsReference = FirebaseDatabase.getInstance().getReference("events").child(currentEventID);
         Button button = findViewById(R.id.commentBtn);
@@ -51,8 +50,7 @@ public class SubmitComment extends AppCompatActivity {
 
         int numericRating = Integer.parseInt(numRating);
 
-        //eventsReference.child("comments").child(currentUid).setValue(commentBody);
-        //eventsReference.child("ratings").child(currentUid).setValue(numericRating);
+
         eventsReference.child("comments").child(utorID).setValue(commentBody);
         eventsReference.child("ratings").child(utorID).setValue(numericRating);
     }

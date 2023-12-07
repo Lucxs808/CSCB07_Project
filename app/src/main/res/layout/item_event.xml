@@ -35,4 +35,26 @@
         android:layout_marginTop="8dp"
         android:text="@string/event_location" />
 
+    <Button
+        android:id="@+id/buttonFeedback"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/eventAverageRating"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/eventTimeTextView"
+        android:text="@string/feedback"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/eventAverageRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/eventDateTextView"
+        android:text="@string/rating"
+        android:textSize="16sp" />
+
 </RelativeLayout>

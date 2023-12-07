@@ -89,4 +89,7 @@
     <string name="AdmissionCategory">Choose your Admission Category</string>
     <string name="Coop_Status">Co-op Status\n</string>
     <string name="enter_the_numeric_rating_1_10">Enter the numeric rating (1 - 10)</string>
+    <string name="rating">Rating</string>
+    <string name="feedback">feedback</string>
+    <string name="comment_content">Comment Content</string>
 </resources>

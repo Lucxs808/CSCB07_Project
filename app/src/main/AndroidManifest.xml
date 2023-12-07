@@ -71,6 +71,9 @@
         <activity
             android:name=".SubmitComment"
             android:label="Submit Comment" />
+        <activity
+            android:name=".CheckFeedback"
+            android:label="Check Feedback" />
 
     </application>
 

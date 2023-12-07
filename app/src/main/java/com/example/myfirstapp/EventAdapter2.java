@@ -2,14 +2,15 @@ package com.example.myfirstapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class EventAdapter2 extends RecyclerView.Adapter<EventAdapter2.EventViewHolder> {
@@ -40,7 +41,6 @@ public class EventAdapter2 extends RecyclerView.Adapter<EventAdapter2.EventViewH
         holder.button.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), SubmitComment.class);
 
-            //Try to pass the eventID to SubmitComment activity
             intent.putExtra("eventID", ID);
             intent.putExtra("utorID", utorID);
             v.getContext().startActivity(intent);
