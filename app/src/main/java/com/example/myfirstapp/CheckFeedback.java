@@ -50,10 +50,10 @@ public class CheckFeedback extends AppCompatActivity {
         commentadapter = new CommentAdapter(commentsList);
         recyclerView.setAdapter(commentadapter);
 
-        loadComments();
+        //loadComments();
     }
 
-    private void loadComments() {
+    /*private void loadComments() {
         commentRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -74,7 +74,7 @@ public class CheckFeedback extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
+    }*/
 
     public void OnBackBtn7Click(View view) {
         Intent intent = new Intent(this, ViewEventsActivity.class);
