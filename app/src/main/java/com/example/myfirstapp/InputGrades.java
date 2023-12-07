@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -19,6 +20,8 @@ public class InputGrades extends AppCompatActivity {
     private ArrayList<Integer> marksList;
     private DatabaseReference databaseReference;
     private String utorid;
+    private int admissionCategory;
+    private boolean coop;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,8 +45,10 @@ public class InputGrades extends AppCompatActivity {
             String selectedCategory = radioButton.getText().toString();
             if (selectedCategory.equals("Admitted to Co-op")) {
                 databaseReference.child(utorid).child("coop").setValue(true);
+                coop = true;
             } else if (selectedCategory.equals("Not Admitted to Co-op")) {
                 databaseReference.child(utorid).child("coop").setValue(false);
+                coop = false;
             }
         });
 
@@ -54,12 +59,15 @@ public class InputGrades extends AppCompatActivity {
             switch (selectedCategory) {
                 case "Computer Science":
                     databaseReference.child(utorid).child("admissionCategory").setValue(0);
+                    admissionCategory = 0;
                     break;
                 case "Mathematics":
                     databaseReference.child(utorid).child("admissionCategory").setValue(1);
+                    admissionCategory = 1;
                     break;
                 case "Statistics":
                     databaseReference.child(utorid).child("admissionCategory").setValue(2);
+                    admissionCategory = 2;
                     break;
             }
         });
@@ -84,8 +92,9 @@ public class InputGrades extends AppCompatActivity {
             updateFirebase();
             Intent intent = new Intent(InputGrades.this, POStChecker.class);
             intent.putExtra("utorid", utorid);
-            Log.d("InputGrades", "Marks List Size: " + (marksList != null ? marksList.size() : "null"));
-            intent.putIntegerArrayListExtra("marksList", marksList); // THIS BROKE EVERYTHING JUST BC IT DIDNT MATCH *Fixed By Lucus
+            intent.putIntegerArrayListExtra("marksList", marksList);
+            intent.putExtra("admissionCategory", admissionCategory);
+            intent.putExtra("coop", coop);
             startActivity(intent);
             finish();
         });
@@ -110,5 +119,10 @@ public class InputGrades extends AppCompatActivity {
             }
         }
         return 0;
+    }
+    public void OnBackButtonInputGradesClick(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("utorID", utorid);
+        startActivity(intent);
     }
 }

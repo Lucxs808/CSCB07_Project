@@ -20,6 +20,6 @@
         android:layout_marginStart="300dp"
         android:layout_marginTop="10dp"
         android:text="@string/back"
-        android:onClick="OnBackBtn3Clicksc"/>
+        android:onClick="OnBackBtn3Clicks"/>
 
 </RelativeLayout>

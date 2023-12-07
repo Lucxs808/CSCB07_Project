@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference d;
     TextView user_details;
     String utorid;
+    int admissionCategory;
+    boolean coop;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,46 +48,34 @@ public class MainActivity extends AppCompatActivity {
         //First User Story (POSt Checker)
         Button post_checker = findViewById(R.id.post);
         DatabaseReference studentsRef = FirebaseDatabase.getInstance().getReference().child("users").child("students");
-        post_checker.setOnClickListener(v -> {
-            DatabaseReference studentRef = studentsRef.child(utorid);
-            studentRef.child("grades").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Boolean hasGrades = dataSnapshot.getValue(Boolean.class);
-                    if (hasGrades != null && hasGrades) {
-                        studentRef.child("marksList").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot gradeListSnapshot) {
-                                ArrayList<Integer> finalGradeList = new ArrayList<>();
-                                for (DataSnapshot gradeSnapshot : gradeListSnapshot.getChildren()) {
-                                    Integer grade = gradeSnapshot.getValue(Integer.class);
-                                    if (grade != null) {
-                                        finalGradeList.add(grade);
-                                    }
-                                }
-                                Intent intent = new Intent(MainActivity.this, POStChecker.class);
-                                intent.putExtra("utorid", utorid);
-                                intent.putIntegerArrayListExtra("marksList", finalGradeList);
-                                startActivity(intent);
-                            }
+        DatabaseReference coopRef = studentsRef.child(utorid);
+        coopRef.child("coop").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Boolean coopValue = dataSnapshot.getValue(Boolean.class);
+                coop = coopValue != null && coopValue;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("FirebaseDebug", "Error fetching coop value");
+            }
+        });
+        coopRef.child("admissionCategory").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Integer admissionCategoryValue = dataSnapshot.getValue(Integer.class);
+                admissionCategory = admissionCategoryValue != null ? admissionCategoryValue : 0;
+            }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Log.d("FirebaseDebug", "Error");
-                            }
-                        });
-                    } else {
-                        // If hasGrades is not true, this means marks still need to be inputted.
-                        Intent intent = new Intent(MainActivity.this, InputGrades.class);
-                        intent.putExtra("utorid", utorid);
-                        startActivity(intent);
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Log.d("FirebaseDebug", "Error");
-                }
-            });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("FirebaseDebug", "Error fetching admissionCategory value");
+            }
+        });
+        post_checker.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, InputGrades.class);
+            intent.putExtra("utorid", utorid);
+            startActivity(intent);
         });
     }
 

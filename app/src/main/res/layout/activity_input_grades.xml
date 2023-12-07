@@ -1,162 +1,181 @@
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/Title_Admission_Category"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="#CCCCCC"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:gravity="center"
-        android:minHeight="48dp"
-        android:text="@string/AdmissionCategory"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:inputType="text"
-        tools:ignore="LabelFor,VisualLintTextFieldSize"
-        android:autofillHints="" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <RadioGroup
-        android:id="@+id/AdmissionCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioButton
-            android:id="@+id/CSOption"
+        <Button
+            android:id="@+id/back_button_input_grades"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Computer Science"/>
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/back"
+            android:onClick="OnBackButtonInputGradesClick"/>
 
-        <RadioButton
-            android:id="@+id/MathOption"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/Title_Admission_Category"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mathematics"/>
+            android:layout_below="@+id/back_button_input_grades"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
+            android:background="#CCCCCC"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:text="@string/AdmissionCategory"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:ignore="LabelFor,VisualLintTextFieldSize" />
 
-        <RadioButton
-            android:id="@+id/StatsOption"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/AdmissionCategory"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Statistics"/>
-    </RadioGroup>
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/Title_Coop_Category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="#CCCCCC"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:gravity="center"
-        android:minHeight="48dp"
-        android:text="@string/Coop_Status"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:inputType="text"
-        tools:ignore="LabelFor,VisualLintTextFieldSize"
-        android:autofillHints="" />
+            <RadioButton
+                android:id="@+id/CSOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Computer Science" />
 
-    <RadioGroup
-        android:id="@+id/CoopCheck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/MathOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mathematics" />
 
-        <RadioButton
-            android:id="@+id/CoopYes"
-            android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/StatsOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Statistics" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/Title_Coop_Category"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admitted to Co-op"/>
+            android:layout_marginTop="8dp"
+            android:background="#CCCCCC"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:text="@string/Coop_Status"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:inputType="text"
+            tools:ignore="LabelFor,VisualLintTextFieldSize"
+            android:autofillHints="" />
 
-        <RadioButton
-            android:id="@+id/CoopNo"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/CoopCheck"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Not Admitted to Co-op"/>
+            android:orientation="vertical">
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/CoopYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admitted to Co-op"/>
 
-    <EditText
-        android:id="@+id/CSCA08"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/enter_csca08_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
+            <RadioButton
+                android:id="@+id/CoopNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not Admitted to Co-op"/>
 
-    <EditText
-        android:id="@+id/CSCA20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_csca20_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:autofillHints=""
-        tools:ignore="VisualLintTextFieldSize" />
+        </RadioGroup>
 
-    <EditText
-        android:id="@+id/CSCA48"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/enter_csca48_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp"
-        tools:ignore="VisualLintTextFieldSize" />
+        <EditText
+            android:id="@+id/CSCA08"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/enter_csca08_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
 
-    <EditText
-        android:id="@+id/CSCA67"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_csc_mata67_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:autofillHints="" />
+        <EditText
+            android:id="@+id/CSCA20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_csca20_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints=""
+            tools:ignore="VisualLintTextFieldSize" />
 
-    <EditText
-        android:id="@+id/MATA31"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_mata31_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:autofillHints="" />
+        <EditText
+            android:id="@+id/CSCA48"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/enter_csca48_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="VisualLintTextFieldSize" />
 
-    <EditText
-        android:id="@+id/MATA37"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_mata37_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:autofillHints="" />
+        <EditText
+            android:id="@+id/CSCA67"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_csc_mata67_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints="" />
 
-    <EditText
-        android:id="@+id/MATA22"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/enter_mata22_numeric_grade_if_taken"
-        android:inputType="text"
-        android:minHeight="48dp" />
+        <EditText
+            android:id="@+id/MATA31"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_mata31_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints="" />
 
-    <Button
-        android:id="@+id/Submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/submit_grades"
-        tools:ignore="VisualLintButtonSize" />
-</LinearLayout>
+        <EditText
+            android:id="@+id/MATA37"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_mata37_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/MATA22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/enter_mata22_numeric_grade_if_taken"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_grades"
+            tools:ignore="VisualLintButtonSize" />
+
+    </LinearLayout>
+
+</ScrollView>

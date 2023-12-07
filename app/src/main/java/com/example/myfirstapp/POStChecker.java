@@ -1,8 +1,10 @@
 package com.example.myfirstapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class POStChecker extends AppCompatActivity {
     private int admissionCategory;
     private boolean coopStatus;
+    private String utorid;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -30,7 +33,10 @@ public class POStChecker extends AppCompatActivity {
         ArrayList<Integer> marks = getIntent().getIntegerArrayListExtra("marksList");
         Log.d("InputGrades1", "Marks List Size: " + (marks != null ? marks.size() : "null"));
 
-        String utorid = getIntent().getStringExtra("utorid");
+        utorid = getIntent().getStringExtra("utorid");
+        coopStatus = getIntent().getBooleanExtra("coop", false);
+        admissionCategory = getIntent().getIntExtra("admissionCategory", 0);
+
         if (utorid != null && !utorid.isEmpty()){
             DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://cscb07-group-18-6e750-default-rtdb.firebaseio.com/").getReference().child("users").child("students").child(utorid);
             databaseReference.addValueEventListener(new ValueEventListener() {
@@ -95,6 +101,7 @@ public class POStChecker extends AppCompatActivity {
         Major_Coop_Stats.setText("Major(Coop) in Statistics: " + isEligibleForMajorCoopStats);
         Specialist_Stats.setText("Specialist in Statistics: " + isEligibleForSpecialistStats);
         Specialist_Coop_Stats.setText("Specialist(Coop) in Statistics: " + isEligibleForSpecialistCoopStats);
+
     }
     private String checkEligibilityForMinorCS(ArrayList<Integer> marks) {
         ArrayList<Double> gpaList = GPAConverter(marks);
@@ -395,5 +402,10 @@ public class POStChecker extends AppCompatActivity {
     }
     private double calculateAverageGPA(ArrayList<Double> gpa) {
         return ((gpa.get(2) + gpa.get(3) + gpa.get(4) + gpa.get(5) + gpa.get(6))/5);
+    }
+    public void OnBackButtonPostCheckerClick(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("utorID", utorid);
+        startActivity(intent);
     }
 }
